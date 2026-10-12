@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the storefront in the TanStack Start index route and define its visual system in `src/styles.css`; this keeps the initial shopping experience focused and theme-consistent.
