@@ -9,6 +9,7 @@ export interface ResellerVariant {
   name: string;
   cost_price: number;
   retail_price: number;
+  retailPrice?: number | undefined;
   stock: number | null;
 }
 
@@ -22,6 +23,8 @@ export interface ResellerProduct {
   category: StoreCategory;
   cost_price: number;
   retail_price: number;
+  retailPrice?: number | undefined;
+  lowestRetailPrice?: number | undefined;
   currency: string;
   stock: number | null;
   inStock: boolean;
@@ -238,10 +241,55 @@ function calculateRetailPrice(costEur: number, overrideKey?: string, name?: stri
 export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
   async (): Promise<{ products: ResellerProduct[]; categories: string[]; lastUpdated: string }> => {
     try {
+      // Load dynamic store configuration (admin custom overrides & multipliers)
+      let customPrices: Record<string, number> = { ...CUSTOM_PRICE_OVERRIDES };
+      let customNames: Record<string, string> = {};
+      let customStock: Record<string, number> = {};
+      let activeMarkup = MARKUP_MULTIPLIER;
+      let activeEurRate = EUR_TO_INR_RATE;
+
+      try {
+        const fs = await import("node:fs");
+        const path = await import("node:path");
+        const configPath = path.join(process.cwd(), "src", "data", "store-config.json");
+        if (fs.existsSync(configPath)) {
+          const cfgData = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+          if (cfgData.customPrices) customPrices = { ...customPrices, ...cfgData.customPrices };
+          if (cfgData.customNames) customNames = { ...cfgData.customNames };
+          if (cfgData.customStock) customStock = { ...cfgData.customStock };
+          if (cfgData.markupMultiplier) activeMarkup = Number(cfgData.markupMultiplier);
+          if (cfgData.eurToInrRate) activeEurRate = Number(cfgData.eurToInrRate);
+        }
+      } catch (err) {
+        // Fallback to default constants if file reading fails
+      }
+
+      const mapWithCustomOverrides = (catalog: ResellerProduct[]): ResellerProduct[] => {
+        return catalog.map((p) => {
+          const customName = customNames[p.id] || customNames[p.name];
+          const resolvedName = customName || p.name;
+          const customP = customPrices[p.id] || customPrices[p.name];
+          const resolvedPrice = customP !== undefined ? customP : p.retail_price;
+          const mappedVariants = (p.variants || []).map((v) => {
+            const vCustomP = customPrices[v.id] || customPrices[v.name];
+            return {
+              ...v,
+              retail_price: vCustomP !== undefined ? vCustomP : v.retail_price,
+            };
+          });
+          return {
+            ...p,
+            name: resolvedName,
+            retail_price: resolvedPrice,
+            variants: mappedVariants,
+          };
+        });
+      };
+
       const apiKey = getApiKey();
       if (!apiKey) {
         return {
-          products: productsFallback as unknown as ResellerProduct[],
+          products: mapWithCustomOverrides(productsFallback as unknown as ResellerProduct[]),
           categories: [...STORE_CATEGORIES],
           lastUpdated: new Date().toISOString(),
         };
@@ -259,27 +307,6 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
 
       const data = await res.json();
       const rawProducts: any[] = data.products || [];
-
-      // Load dynamic store configuration (admin custom overrides & multipliers)
-      let customPrices: Record<string, number> = { ...CUSTOM_PRICE_OVERRIDES };
-      let customStock: Record<string, number> = {};
-      let activeMarkup = MARKUP_MULTIPLIER;
-      let activeEurRate = EUR_TO_INR_RATE;
-
-      try {
-        const fs = await import("node:fs");
-        const path = await import("node:path");
-        const configPath = path.join(process.cwd(), "src", "data", "store-config.json");
-        if (fs.existsSync(configPath)) {
-          const cfgData = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-          if (cfgData.customPrices) customPrices = { ...customPrices, ...cfgData.customPrices };
-          if (cfgData.customStock) customStock = { ...cfgData.customStock };
-          if (cfgData.markupMultiplier) activeMarkup = Number(cfgData.markupMultiplier);
-          if (cfgData.eurToInrRate) activeEurRate = Number(cfgData.eurToInrRate);
-        }
-      } catch (err) {
-        // Fallback to default constants if file reading fails
-      }
 
       const getResolvedPrice = (costEur: number, key?: string, name?: string) => {
         if (key && customPrices[key] !== undefined) return customPrices[key]!;
@@ -311,7 +338,12 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
 
       for (const p of rawProducts) {
         const meta = (supremeCatalogMeta as Record<string, any>)[p.id] || {};
-        const brandName = (meta.brand || meta.name || p.name || "").replace(/\\u0026/g, "&").trim();
+        let brandName = (meta.brand || meta.name || p.name || "").replace(/\\u0026/g, "&").trim();
+        if (customNames[p.id]) {
+          brandName = customNames[p.id];
+        } else if (customNames[brandName]) {
+          brandName = customNames[brandName];
+        }
         const brandSlug = meta.brandSlug || meta.slug || p.slug || p.id;
         const heuristicCategory = determineCategory(p.id, brandName, brandSlug);
         const category: StoreCategory =
@@ -434,10 +466,14 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
         };
       });
 
-      const resolvedProducts =
+      const resolvedProducts = (
         products && products.length > 0
           ? products
-          : (productsFallback as unknown as ResellerProduct[]);
+          : (productsFallback as unknown as ResellerProduct[])
+      ).map((p) => {
+        const customName = customNames[p.id] || customNames[p.name];
+        return customName ? { ...p, name: customName } : p;
+      });
 
       return {
         products: resolvedProducts,
@@ -446,8 +482,22 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
       };
     } catch (err: any) {
       console.error("Failed to fetch reseller products, serving fallback catalog:", err);
+      let customNames: Record<string, string> = {};
+      try {
+        const fs = await import("node:fs");
+        const path = await import("node:path");
+        const configPath = path.join(process.cwd(), "src", "data", "store-config.json");
+        if (fs.existsSync(configPath)) {
+          const cfgData = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+          if (cfgData.customNames) customNames = cfgData.customNames;
+        }
+      } catch {}
+      const fallbackList = (productsFallback as unknown as ResellerProduct[]).map((p) => {
+        const customName = customNames[p.id] || customNames[p.name];
+        return customName ? { ...p, name: customName } : p;
+      });
       return {
-        products: productsFallback as unknown as ResellerProduct[],
+        products: fallbackList,
         categories: [...STORE_CATEGORIES],
         lastUpdated: new Date().toISOString(),
       };

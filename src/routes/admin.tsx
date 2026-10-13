@@ -62,6 +62,7 @@ function AdminDashboardPage() {
 
   // Price & stock edit forms
   const [customPricesDraft, setCustomPricesDraft] = useState<Record<string, number>>({});
+  const [customNamesDraft, setCustomNamesDraft] = useState<Record<string, string>>({});
   const [customStockDraft, setCustomStockDraft] = useState<Record<string, number>>({});
   const [markupDraft, setMarkupDraft] = useState<number>(3.2);
   const [eurRateDraft, setEurRateDraft] = useState<number>(92);
@@ -98,6 +99,7 @@ function AdminDashboardPage() {
       setProducts(productsData.products || []);
 
       setCustomPricesDraft(dashData.config.customPrices || {});
+      setCustomNamesDraft(dashData.config.customNames || {});
       setCustomStockDraft(dashData.config.customStock || {});
       setMarkupDraft(dashData.config.markupMultiplier || 3.2);
       setEurRateDraft(dashData.config.eurToInrRate || 92);
@@ -147,6 +149,7 @@ function AdminDashboardPage() {
           token,
           config: {
             customPrices: customPricesDraft,
+            customNames: customNamesDraft,
             customStock: customStockDraft,
             markupMultiplier: Number(markupDraft),
             eurToInrRate: Number(eurRateDraft),
@@ -165,6 +168,13 @@ function AdminDashboardPage() {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const handleNameChange = (productKey: string, newName: string) => {
+    setCustomNamesDraft((prev) => ({
+      ...prev,
+      [productKey]: newName,
+    }));
   };
 
   const handlePriceChange = (productKey: string, price: number) => {
@@ -567,7 +577,14 @@ function AdminDashboardPage() {
                 <table className="w-full text-left text-xs">
                   <thead className="border-b border-white/[0.08] bg-white/[0.02] text-[11px] font-bold uppercase tracking-wider text-white/50">
                     <tr>
-                      <th className="p-4">Product / Variant Name</th>
+                      <th className="p-4">
+                        <div className="flex items-center gap-1.5">
+                          <span>Product / Variant Name</span>
+                          <span className="text-[10px] text-[#22c55e] font-normal normal-case border border-[#22c55e]/30 bg-[#22c55e]/10 px-1.5 py-0.5 rounded">
+                            Renameable
+                          </span>
+                        </div>
+                      </th>
                       <th className="p-4">Category</th>
                       <th className="p-4">Wholesale Cost</th>
                       <th className="p-4">Calculated Retail</th>
@@ -604,12 +621,47 @@ function AdminDashboardPage() {
                                     className="size-8 rounded-lg object-cover border border-white/10 shrink-0"
                                   />
                                 )}
-                                <div>
-                                  <span className="font-semibold text-white block">
-                                    {p.name}
-                                  </span>
+                                <div className="flex-1 min-w-[200px]">
+                                  {idx === 0 ? (
+                                    <div className="space-y-1">
+                                      <input
+                                        type="text"
+                                        value={customNamesDraft[p.id] ?? customNamesDraft[p.name] ?? p.name}
+                                        onChange={(e) => {
+                                          const val = e.target.value;
+                                          handleNameChange(p.id, val);
+                                          handleNameChange(p.name, val);
+                                        }}
+                                        placeholder={p.name}
+                                        title="Click to edit product display name"
+                                        className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-semibold text-white placeholder:text-white/30 focus:border-[#22c55e] focus:bg-[#151921] focus:outline-none transition-colors"
+                                      />
+                                      {Boolean(
+                                        (customNamesDraft[p.id] || customNamesDraft[p.name]) &&
+                                          (customNamesDraft[p.id] !== p.name || customNamesDraft[p.name] !== p.name)
+                                      ) && (
+                                        <div className="text-[10px] text-amber-400/80 font-mono flex items-center gap-1">
+                                          <span>Original: {p.name}</span>
+                                          <button
+                                            type="button"
+                                            onClick={() => {
+                                              handleNameChange(p.id, "");
+                                              handleNameChange(p.name, "");
+                                            }}
+                                            className="text-white/40 hover:text-white underline ml-1 cursor-pointer"
+                                          >
+                                            Reset
+                                          </button>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ) : (
+                                    <span className="font-semibold text-white/90 block truncate text-xs">
+                                      {customNamesDraft[p.id] ?? customNamesDraft[p.name] ?? p.name}
+                                    </span>
+                                  )}
                                   {v.name !== "Standard" && (
-                                    <span className="text-[11px] text-[#22c55e]">
+                                    <span className="text-[11px] text-[#22c55e] block mt-0.5">
                                       Plan: {v.name}
                                     </span>
                                   )}
