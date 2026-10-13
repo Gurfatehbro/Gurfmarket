@@ -12,11 +12,7 @@ export interface SendOrderEmailParams {
 
 export async function sendOrderConfirmationEmail(params: SendOrderEmailParams): Promise<{ success: boolean; id?: string; error?: string }> {
   try {
-    const apiKey = process.env["RESEND_API_KEY"];
-    if (!apiKey) {
-      console.warn("RESEND_API_KEY is not configured. Email skipped.");
-      return { success: false, error: "RESEND_API_KEY missing" };
-    }
+    const apiKey = process.env["RESEND_API_KEY"] || "re_VwTiUkCF_6f11JmYMjumXd4C873uKKDi5";
 
     if (!params.toEmail || !params.toEmail.includes("@")) {
       return { success: false, error: "Invalid customer email" };

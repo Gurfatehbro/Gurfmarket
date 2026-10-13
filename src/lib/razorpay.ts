@@ -46,11 +46,8 @@ export interface PaymentVerificationResult {
 }
 
 function getRazorpayCredentials(): { keyId: string; keySecret: string } {
-  const keyId = process.env["RAZORPAY_KEY_ID"];
-  const keySecret = process.env["RAZORPAY_KEY_SECRET"];
-  if (!keyId || !keySecret) {
-    throw new Error("Razorpay credentials (RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET) not configured on server.");
-  }
+  const keyId = process.env["RAZORPAY_KEY_ID"] || "rzp_live_TnLnd26KFDEfoU";
+  const keySecret = process.env["RAZORPAY_KEY_SECRET"] || "tHr0xnFLmtsWJPdrue3r6YYK";
   return { keyId, keySecret };
 }
 
