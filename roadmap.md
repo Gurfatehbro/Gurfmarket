@@ -1,4 +1,4 @@
-- [x] Establish the dark-blue visual system and Northform identity.
+- [x] Establish the dark-blue visual system and GurfMarket identity.
 - [x] Build the storefront hero, generated product artwork, navigation, and collection states.
 - [x] Add bundle, about, FAQ, footer, mobile navigation, and page metadata.
 - [ ] Verify the storefront in desktop and mobile preview; confirm catalog states are clearly marked as pending.
