@@ -464,7 +464,7 @@ function ProductDetail() {
                         {/* Right: Price */}
                         <div className="shrink-0 text-right pl-2">
                           <span className="font-display text-sm sm:text-base font-bold text-white">
-                            ₹{v.retail_price.toLocaleString("en-IN")}
+                            ₹{Number(v.retail_price ?? v.retailPrice ?? 0).toLocaleString("en-IN")}
                           </span>
                         </div>
                       </button>
@@ -769,7 +769,7 @@ function ProductDetail() {
                       {item.name}
                     </h4>
                     <p className="mt-2 font-display text-base font-bold text-white">
-                      From ₹{item.retail_price.toLocaleString("en-IN")}
+                      From ₹{Number(item.retail_price ?? item.lowestRetailPrice ?? 0).toLocaleString("en-IN")}
                     </p>
                   </div>
                 </Link>

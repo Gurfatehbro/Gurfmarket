@@ -18,7 +18,9 @@
         "id": "cmv3p7npk0ai2uir7h07xefhc_cmv3p7npl0ai3uir7ou4nfjyo",
         "name": "20+ Games",
         "costEur": 0.12,
+        "cost_price": 0.12,
         "retailPrice": 35,
+        "retail_price": 35,
         "stock": 18,
         "variantId": "cmv3p7npl0ai3uir7ou4nfjyo",
         "rawProductId": "cmv3p7npk0ai2uir7h07xefhc"
@@ -27,7 +29,9 @@
         "id": "cmv3p7npk0ai2uir7h07xefhc_cmv3p7npl0ai4uir707m7ropk",
         "name": "50+ Games",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 11,
         "variantId": "cmv3p7npl0ai4uir707m7ropk",
         "rawProductId": "cmv3p7npk0ai2uir7h07xefhc"
@@ -36,7 +40,9 @@
         "id": "cmv3p7npk0ai2uir7h07xefhc_cmv3p7npl0ai5uir7fk5wwc9c",
         "name": "100+ Games",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 18,
         "variantId": "cmv3p7npl0ai5uir7fk5wwc9c",
         "rawProductId": "cmv3p7npk0ai2uir7h07xefhc"
@@ -45,14 +51,22 @@
         "id": "cmv3p7npk0ai2uir7h07xefhc_cmv3p7npl0ai6uir7z5fdj0c1",
         "name": "200-300 Games",
         "costEur": 1.15,
+        "cost_price": 1.15,
         "retailPrice": 339,
+        "retail_price": 339,
         "stock": 10,
         "variantId": "cmv3p7npl0ai6uir7z5fdj0c1",
         "rawProductId": "cmv3p7npk0ai2uir7h07xefhc"
       }
     ],
+    "cost_price": 0.12,
+    "retail_price": 35,
     "lowestRetailPrice": 35,
+    "currency": "INR",
+    "stock": 57,
     "totalStock": 57,
+    "totalStockCount": 57,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -74,14 +88,22 @@
         "id": "cmuh0gcir00p2503edh1ja8gq_cmuh0gcis00p6503ezqrezxlw",
         "name": "Elevenlabs [LIFETIME]",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 33,
         "variantId": "cmuh0gcis00p6503ezqrezxlw",
         "rawProductId": "cmuh0gcir00p2503edh1ja8gq"
       }
     ],
+    "cost_price": 0.55,
+    "retail_price": 162,
     "lowestRetailPrice": 162,
+    "currency": "INR",
+    "stock": 33,
     "totalStock": 33,
+    "totalStockCount": 33,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -103,14 +125,22 @@
         "id": "cmv3pd20t0am2uir7qv2m1ps3_cmv3pd20t0am3uir7oxc3fy2o",
         "name": "[Activation Link 12m]",
         "costEur": 2.5,
+        "cost_price": 2.5,
         "retailPrice": 736,
+        "retail_price": 736,
         "stock": 2,
         "variantId": "cmv3pd20t0am3uir7oxc3fy2o",
         "rawProductId": "cmv3pd20t0am2uir7qv2m1ps3"
       }
     ],
+    "cost_price": 2.5,
+    "retail_price": 736,
     "lowestRetailPrice": 736,
-    "totalStock": 2
+    "currency": "INR",
+    "stock": 2,
+    "totalStock": 2,
+    "totalStockCount": 2,
+    "inStock": true
   },
   {
     "id": "cmv3odp9e0a8ouir7lbftmsp3",
@@ -137,7 +167,9 @@
         "id": "cmv3odp9e0a8ouir7lbftmsp3_cmv3odp9e0a8puir77nj5w9l7",
         "name": "Mega Fan Member, Full Access",
         "costEur": 1.25,
+        "cost_price": 1.25,
         "retailPrice": 368,
+        "retail_price": 368,
         "stock": 61,
         "variantId": "cmv3odp9e0a8puir77nj5w9l7",
         "rawProductId": "cmv3odp9e0a8ouir7lbftmsp3"
@@ -146,8 +178,10 @@
         "id": "cmuh0gbgi008b503eabk96d9d_cmuh0gbgj008f503evznvcnib",
         "name": "Fan Member",
         "costEur": 0.12,
+        "cost_price": 0.12,
         "retailPrice": 35,
-        "stock": 127,
+        "retail_price": 35,
+        "stock": 126,
         "variantId": "cmuh0gbgj008f503evznvcnib",
         "rawProductId": "cmuh0gbgi008b503eabk96d9d"
       },
@@ -155,14 +189,22 @@
         "id": "cmuh0gbjd009h503evirzwvsa_cmuh0gbje009l503edhwvn5mz",
         "name": "Mega Fan Member",
         "costEur": 0.35,
+        "cost_price": 0.35,
         "retailPrice": 103,
+        "retail_price": 103,
         "stock": 101,
         "variantId": "cmuh0gbje009l503edhwvn5mz",
         "rawProductId": "cmuh0gbjd009h503evirzwvsa"
       }
     ],
+    "cost_price": 1.25,
+    "retail_price": 35,
     "lowestRetailPrice": 35,
-    "totalStock": 289,
+    "currency": "INR",
+    "stock": 288,
+    "totalStock": 288,
+    "totalStockCount": 288,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -184,14 +226,22 @@
         "id": "cmv3p0w4r0affuir77jtftopw_cmv3p0w4r0afguir7b2y76rbo",
         "name": "[LIFETIME]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 7,
         "variantId": "cmv3p0w4r0afguir7b2y76rbo",
         "rawProductId": "cmv3p0w4r0affuir77jtftopw"
       }
     ],
+    "cost_price": 0.65,
+    "retail_price": 191,
     "lowestRetailPrice": 191,
+    "currency": "INR",
+    "stock": 7,
     "totalStock": 7,
+    "totalStockCount": 7,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -213,7 +263,9 @@
         "id": "cmv3qw9dc0bl0uir740q7n13h_cmv3qw9dc0bl1uir7gi18i87f",
         "name": "Logs",
         "costEur": 0.03,
+        "cost_price": 0.03,
         "retailPrice": 9,
+        "retail_price": 9,
         "stock": 0,
         "variantId": "cmv3qw9dc0bl1uir7gi18i87f",
         "rawProductId": "cmv3qw9dc0bl0uir740q7n13h"
@@ -222,14 +274,22 @@
         "id": "cmv3qw9dc0bl0uir740q7n13h_cmv3qw9dc0bl2uir7hrvuid6z",
         "name": "Verified 5/5",
         "costEur": 4.75,
+        "cost_price": 4.75,
         "retailPrice": 1398,
+        "retail_price": 1398,
         "stock": 7,
         "variantId": "cmv3qw9dc0bl2uir7hrvuid6z",
         "rawProductId": "cmv3qw9dc0bl0uir740q7n13h"
       }
     ],
+    "cost_price": 0.03,
+    "retail_price": 9,
     "lowestRetailPrice": 9,
+    "currency": "INR",
+    "stock": 7,
     "totalStock": 7,
+    "totalStockCount": 7,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -260,7 +320,9 @@
         "id": "cmuyf54ab02efk37dr4qsl5vz_cmuyfi7e602zek37d7sz7of6t",
         "name": "Claude FA Unlimited [1 Day] — Redeem Here: https://quiteai-new.vercel.app/studio",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 80,
         "variantId": "cmuyfi7e602zek37d7sz7of6t",
         "rawProductId": "cmuyf54ab02efk37dr4qsl5vz"
@@ -269,7 +331,9 @@
         "id": "cmur3p1mk007c1088nzuubdfe_cmur3p1mk007e10887e2zghvr",
         "name": "7 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 0.85,
+        "cost_price": 0.85,
         "retailPrice": 250,
+        "retail_price": 250,
         "stock": 41,
         "variantId": "cmur3p1mk007e10887e2zghvr",
         "rawProductId": "cmur3p1mk007c1088nzuubdfe"
@@ -278,7 +342,9 @@
         "id": "cmur3p1mp007l1088sfb93xw6_cmur3p1mq007n1088huitaln3",
         "name": "30 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 2.85,
+        "cost_price": 2.85,
         "retailPrice": 839,
+        "retail_price": 839,
         "stock": 105,
         "variantId": "cmur3p1mq007n1088huitaln3",
         "rawProductId": "cmur3p1mp007l1088sfb93xw6"
@@ -287,14 +353,22 @@
         "id": "cmur3p1mv007u1088y0f0oeiv_cmur3p1mv007w1088o9w47z2i",
         "name": "Lifetime - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 13.5,
+        "cost_price": 13.5,
         "retailPrice": 3974,
+        "retail_price": 3974,
         "stock": 18,
         "variantId": "cmur3p1mv007w1088o9w47z2i",
         "rawProductId": "cmur3p1mv007u1088y0f0oeiv"
       }
     ],
+    "cost_price": 0.55,
+    "retail_price": 162,
     "lowestRetailPrice": 162,
+    "currency": "INR",
+    "stock": 244,
     "totalStock": 244,
+    "totalStockCount": 244,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -316,14 +390,22 @@
         "id": "cmv3paeyo0ajtuir7201sm3ad_cmv3paeyp0ajuuir73n6cuqye",
         "name": "Express Premium 12m [ Key+Link ]",
         "costEur": 1,
+        "cost_price": 1,
         "retailPrice": 294,
+        "retail_price": 294,
         "stock": 8,
         "variantId": "cmv3paeyp0ajuuir73n6cuqye",
         "rawProductId": "cmv3paeyo0ajtuir7201sm3ad"
       }
     ],
+    "cost_price": 1,
+    "retail_price": 294,
     "lowestRetailPrice": 294,
+    "currency": "INR",
+    "stock": 8,
     "totalStock": 8,
+    "totalStockCount": 8,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -345,14 +427,22 @@
         "id": "cmv4ctumg0nsvuir72ack8qcg_cmv4ctumg0nswuir7ytqal1vb",
         "name": "1 [Month]",
         "costEur": 2.5,
+        "cost_price": 2.5,
         "retailPrice": 736,
+        "retail_price": 736,
         "stock": 0,
         "variantId": "cmv4ctumg0nswuir7ytqal1vb",
         "rawProductId": "cmv4ctumg0nsvuir72ack8qcg"
       }
     ],
+    "cost_price": 2.5,
+    "retail_price": 736,
     "lowestRetailPrice": 736,
-    "totalStock": 0
+    "currency": "INR",
+    "stock": 0,
+    "totalStock": 0,
+    "totalStockCount": 0,
+    "inStock": false
   },
   {
     "id": "cmv3ofjye0a9nuir7xaohdkjn",
@@ -373,14 +463,22 @@
         "id": "cmv3ofjye0a9nuir7xaohdkjn_cmv3ofjye0a9ouir7pg3b1ce1",
         "name": "[Lifetime]",
         "costEur": 0.45,
+        "cost_price": 0.45,
         "retailPrice": 132,
+        "retail_price": 132,
         "stock": 3,
         "variantId": "cmv3ofjye0a9ouir7pg3b1ce1",
         "rawProductId": "cmv3ofjye0a9nuir7xaohdkjn"
       }
     ],
+    "cost_price": 0.45,
+    "retail_price": 132,
     "lowestRetailPrice": 132,
+    "currency": "INR",
+    "stock": 3,
     "totalStock": 3,
+    "totalStockCount": 3,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -411,7 +509,9 @@
         "id": "cmun9sely00pytry5tp450t4g",
         "name": "Lifetime",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 67,
         "rawProductId": "cmun9sely00pytry5tp450t4g"
       },
@@ -419,7 +519,9 @@
         "id": "cmun9tr0o00q8try5s9my8c9c",
         "name": "No Ads",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 56,
         "rawProductId": "cmun9tr0o00q8try5s9my8c9c"
       },
@@ -427,7 +529,9 @@
         "id": "cmun9ut2400qitry5303yckon_cmv3xu8d10gftuir7tyedwxum",
         "name": "Links",
         "costEur": 0.75,
+        "cost_price": 0.75,
         "retailPrice": 221,
+        "retail_price": 221,
         "stock": 28,
         "variantId": "cmv3xu8d10gftuir7tyedwxum",
         "rawProductId": "cmun9ut2400qitry5303yckon"
@@ -436,13 +540,21 @@
         "id": "cmun9w3vi00qstry5p072r7gj",
         "name": "Full Access Premium 4K",
         "costEur": 1.75,
+        "cost_price": 1.75,
         "retailPrice": 515,
+        "retail_price": 515,
         "stock": 0,
         "rawProductId": "cmun9w3vi00qstry5p072r7gj"
       }
     ],
+    "cost_price": 0.25,
+    "retail_price": 74,
     "lowestRetailPrice": 74,
+    "currency": "INR",
+    "stock": 151,
     "totalStock": 151,
+    "totalStockCount": 151,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -467,7 +579,9 @@
         "id": "cmuh0gb8n004m503ejdhwstkf_cmuh0gb8o004q503e4hgeap3w",
         "name": "Lifetime",
         "costEur": 0.23,
+        "cost_price": 0.23,
         "retailPrice": 68,
+        "retail_price": 68,
         "stock": 152,
         "variantId": "cmuh0gb8o004q503e4hgeap3w",
         "rawProductId": "cmuh0gb8n004m503ejdhwstkf"
@@ -476,14 +590,22 @@
         "id": "cmuh0gbvg00fx503ev1alj2kc_cmuh0gbvh00g1503e09naxqna",
         "name": "Private Lifetime - [Code: https://elitekeys.site/]",
         "costEur": 0.99,
+        "cost_price": 0.99,
         "retailPrice": 291,
+        "retail_price": 291,
         "stock": 138,
         "variantId": "cmuh0gbvh00g1503e09naxqna",
         "rawProductId": "cmuh0gbvg00fx503ev1alj2kc"
       }
     ],
+    "cost_price": 0.23,
+    "retail_price": 68,
     "lowestRetailPrice": 68,
+    "currency": "INR",
+    "stock": 290,
     "totalStock": 290,
+    "totalStockCount": 290,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -508,7 +630,9 @@
         "id": "cmuh0gbfj0080503e6yk0jl0a_cmuh0gbfk0084503evmklir27",
         "name": "AutoPay, Full Access",
         "costEur": 0.97,
+        "cost_price": 0.97,
         "retailPrice": 286,
+        "retail_price": 286,
         "stock": 215,
         "variantId": "cmuh0gbfk0084503evmklir27",
         "rawProductId": "cmuh0gbfj0080503e6yk0jl0a"
@@ -517,14 +641,22 @@
         "id": "cmuh0gb4a003e503e5a9ts097_cmuh0gb4c003i503eu5khe270",
         "name": "Keys [Lifetime + Autoreplace]",
         "costEur": 1.55,
+        "cost_price": 1.55,
         "retailPrice": 456,
+        "retail_price": 456,
         "stock": 41,
         "variantId": "cmuh0gb4c003i503eu5khe270",
         "rawProductId": "cmuh0gb4a003e503e5a9ts097"
       }
     ],
+    "cost_price": 0.97,
+    "retail_price": 286,
     "lowestRetailPrice": 286,
+    "currency": "INR",
+    "stock": 256,
     "totalStock": 256,
+    "totalStockCount": 256,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -552,8 +684,10 @@
         "id": "cmuh0gbf40079503epzi3nfti_cmuh0gbf5007d503ec2xz6unl",
         "name": "Only Disney+",
         "costEur": 0.15,
+        "cost_price": 0.15,
         "retailPrice": 44,
-        "stock": 257,
+        "retail_price": 44,
+        "stock": 255,
         "variantId": "cmuh0gbf5007d503ec2xz6unl",
         "rawProductId": "cmuh0gbf40079503epzi3nfti"
       },
@@ -561,7 +695,9 @@
         "id": "cmuh0gbf9007i503emcd5xjjw_cmuh0gbfa007m503ex7wb2fuv",
         "name": "Disney+ & Hulu",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 141,
         "variantId": "cmuh0gbfa007m503ex7wb2fuv",
         "rawProductId": "cmuh0gbf9007i503emcd5xjjw"
@@ -570,14 +706,22 @@
         "id": "cmuh0gbfe007r503e0qqs55q9_cmuh0gbff007v503eslwdpihe",
         "name": "Disney+ & Hulu & ESPN+",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 167,
         "variantId": "cmuh0gbff007v503eslwdpihe",
         "rawProductId": "cmuh0gbfe007r503e0qqs55q9"
       }
     ],
+    "cost_price": 0.15,
+    "retail_price": 44,
     "lowestRetailPrice": 44,
-    "totalStock": 565,
+    "currency": "INR",
+    "stock": 563,
+    "totalStock": 563,
+    "totalStockCount": 563,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -602,7 +746,9 @@
         "id": "cmuh0gb7l004b503edae65n8q_cmuh0gb7m004f503eoff6pu5r",
         "name": "1 Month",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 38,
         "variantId": "cmuh0gb7m004f503eoff6pu5r",
         "rawProductId": "cmuh0gb7l004b503edae65n8q"
@@ -611,14 +757,22 @@
         "id": "cmuh0gc2a00j2503e0yrqyrq3_cmuh0gc2a00j6503efkh79dru",
         "name": "6 Months",
         "costEur": 2.25,
+        "cost_price": 2.25,
         "retailPrice": 662,
+        "retail_price": 662,
         "stock": 231,
         "variantId": "cmuh0gc2a00j6503efkh79dru",
         "rawProductId": "cmuh0gc2a00j2503e0yrqyrq3"
       }
     ],
+    "cost_price": 0.55,
+    "retail_price": 162,
     "lowestRetailPrice": 162,
+    "currency": "INR",
+    "stock": 269,
     "totalStock": 269,
+    "totalStockCount": 269,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -640,8 +794,10 @@
         "id": "cmuh0gb9k004x503eejsj0zwr_cmuh0gb9l0051503estsywdqx",
         "name": "(Full Access) [Lifetime]",
         "costEur": 0.75,
+        "cost_price": 0.75,
         "retailPrice": 221,
-        "stock": 110,
+        "retail_price": 221,
+        "stock": 109,
         "variantId": "cmuh0gb9l0051503estsywdqx",
         "rawProductId": "cmuh0gb9k004x503eejsj0zwr"
       },
@@ -649,14 +805,22 @@
         "id": "cmuh0gb9k004x503eejsj0zwr_cmv3zgf200haouir7190cada7",
         "name": "Links",
         "costEur": 1.25,
+        "cost_price": 1.25,
         "retailPrice": 368,
+        "retail_price": 368,
         "stock": 6,
         "variantId": "cmv3zgf200haouir7190cada7",
         "rawProductId": "cmuh0gb9k004x503eejsj0zwr"
       }
     ],
+    "cost_price": 0.75,
+    "retail_price": 221,
     "lowestRetailPrice": 221,
-    "totalStock": 116,
+    "currency": "INR",
+    "stock": 115,
+    "totalStock": 115,
+    "totalStockCount": 115,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -684,7 +848,9 @@
         "id": "cmun8xi9z00eytry5qu16k6bg",
         "name": "USA",
         "costEur": 0.15,
+        "cost_price": 0.15,
         "retailPrice": 44,
+        "retail_price": 44,
         "stock": 140,
         "rawProductId": "cmun8xi9z00eytry5qu16k6bg"
       },
@@ -692,7 +858,9 @@
         "id": "cmuh0gb57003p503e0s4osye1_cmuh0gb58003t503eiv48dxc8",
         "name": "LATAM + EU",
         "costEur": 0.12,
+        "cost_price": 0.12,
         "retailPrice": 35,
+        "retail_price": 35,
         "stock": 302,
         "variantId": "cmuh0gb58003t503eiv48dxc8",
         "rawProductId": "cmuh0gb57003p503e0s4osye1"
@@ -701,14 +869,22 @@
         "id": "cmunv9xhn00tbsuj2sewzatzg_cmv3okbj60ac7uir77vsxy9ki",
         "name": "MEXICO + UFC [FA]",
         "costEur": 1,
+        "cost_price": 1,
         "retailPrice": 294,
+        "retail_price": 294,
         "stock": 40,
         "variantId": "cmv3okbj60ac7uir77vsxy9ki",
         "rawProductId": "cmunv9xhn00tbsuj2sewzatzg"
       }
     ],
+    "cost_price": 0.15,
+    "retail_price": 35,
     "lowestRetailPrice": 35,
+    "currency": "INR",
+    "stock": 482,
     "totalStock": 482,
+    "totalStockCount": 482,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -742,8 +918,10 @@
         "id": "cmuh0gbia008x503eo1r1nb6f_cmuh0gbib0091503e788s7cag",
         "name": "Random",
         "costEur": 0.13,
+        "cost_price": 0.13,
         "retailPrice": 38,
-        "stock": 82,
+        "retail_price": 38,
+        "stock": 80,
         "variantId": "cmuh0gbib0091503e788s7cag",
         "rawProductId": "cmuh0gbia008x503eo1r1nb6f"
       },
@@ -751,7 +929,9 @@
         "id": "cmuh0gbj80098503erix3xtid_cmuh0gbj9009c503ek65j6nb7",
         "name": "Random ES",
         "costEur": 0.4,
+        "cost_price": 0.4,
         "retailPrice": 118,
+        "retail_price": 118,
         "stock": 20,
         "variantId": "cmuh0gbj9009c503ek65j6nb7",
         "rawProductId": "cmuh0gbj80098503erix3xtid"
@@ -760,7 +940,9 @@
         "id": "cmuh0gd9l00yq503etod6c5sb_cmuh0gd9m00yu503enu8b54qg",
         "name": "Plus UK",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 5,
         "variantId": "cmuh0gd9m00yu503enu8b54qg",
         "rawProductId": "cmuh0gd9l00yq503etod6c5sb"
@@ -769,7 +951,9 @@
         "id": "cmuh0gd8200y4503eyr33a43b_cmuh0gd8300y8503eq1h7pnle",
         "name": "Plus Italy",
         "costEur": 0.3,
+        "cost_price": 0.3,
         "retailPrice": 88,
+        "retail_price": 88,
         "stock": 14,
         "variantId": "cmuh0gd8300y8503eq1h7pnle",
         "rawProductId": "cmuh0gd8200y4503eyr33a43b"
@@ -778,14 +962,22 @@
         "id": "cmuh0gd6y00xt503ecxaccpz3_cmuh0gd6z00xx503erf2wrbrz",
         "name": "Ultimate Germany",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 3,
         "variantId": "cmuh0gd6z00xx503erf2wrbrz",
         "rawProductId": "cmuh0gd6y00xt503ecxaccpz3"
       }
     ],
+    "cost_price": 0.13,
+    "retail_price": 38,
     "lowestRetailPrice": 38,
-    "totalStock": 124,
+    "currency": "INR",
+    "stock": 122,
+    "totalStock": 122,
+    "totalStockCount": 122,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -807,14 +999,22 @@
         "id": "cmuh0gbsi00ei503ey8v65lob_cmuh0gbsj00em503emz2uctyo",
         "name": "Lifetime",
         "costEur": 0.6,
+        "cost_price": 0.6,
         "retailPrice": 177,
+        "retail_price": 177,
         "stock": 143,
         "variantId": "cmuh0gbsj00em503emz2uctyo",
         "rawProductId": "cmuh0gbsi00ei503ey8v65lob"
       }
     ],
+    "cost_price": 0.6,
+    "retail_price": 177,
     "lowestRetailPrice": 177,
+    "currency": "INR",
+    "stock": 143,
     "totalStock": 143,
+    "totalStockCount": 143,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -836,14 +1036,22 @@
         "id": "cmuh0gcdf00n8503e6xvwm4mn_cmuh0gcdh00nc503ere64dofl",
         "name": "Amc+ [LIFETIME]",
         "costEur": 0.15,
+        "cost_price": 0.15,
         "retailPrice": 44,
+        "retail_price": 44,
         "stock": 12,
         "variantId": "cmuh0gcdh00nc503ere64dofl",
         "rawProductId": "cmuh0gcdf00n8503e6xvwm4mn"
       }
     ],
+    "cost_price": 0.15,
+    "retail_price": 44,
     "lowestRetailPrice": 44,
+    "currency": "INR",
+    "stock": 12,
     "totalStock": 12,
+    "totalStockCount": 12,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -865,14 +1073,22 @@
         "id": "cmuh0gcki00px503egbvhulu8_cmuh0gckj00q1503em08ccvqd",
         "name": "Nba [LIFETIME]",
         "costEur": 0.15,
+        "cost_price": 0.15,
         "retailPrice": 44,
+        "retail_price": 44,
         "stock": 68,
         "variantId": "cmuh0gckj00q1503em08ccvqd",
         "rawProductId": "cmuh0gcki00px503egbvhulu8"
       }
     ],
+    "cost_price": 0.15,
+    "retail_price": 44,
     "lowestRetailPrice": 44,
+    "currency": "INR",
+    "stock": 68,
     "totalStock": 68,
+    "totalStockCount": 68,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -894,13 +1110,21 @@
         "id": "cmun9gv7d00mhtry5nt6vpk4c",
         "name": "1 Month",
         "costEur": 0.15,
+        "cost_price": 0.15,
         "retailPrice": 44,
+        "retail_price": 44,
         "stock": 6,
         "rawProductId": "cmun9gv7d00mhtry5nt6vpk4c"
       }
     ],
+    "cost_price": 0.15,
+    "retail_price": 44,
     "lowestRetailPrice": 44,
+    "currency": "INR",
+    "stock": 6,
     "totalStock": 6,
+    "totalStockCount": 6,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -943,7 +1167,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gbo700bm503efh0k1hqw",
         "name": "DISCORD AGED ACCOUNTS [2024 ]",
         "costEur": 0.28,
+        "cost_price": 0.28,
         "retailPrice": 82,
+        "retail_price": 82,
         "stock": 114,
         "variantId": "cmuh0gbo700bm503efh0k1hqw",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -952,7 +1178,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gbo800bq503e7uve2r3n",
         "name": "DISCORD AGED ACCOUNTS [ 2023 ]",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 13,
         "variantId": "cmuh0gbo800bq503e7uve2r3n",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -961,7 +1189,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gbo800bu503enbu5n4v7",
         "name": "DISCORD AGED ACCOUNTS [ 2022 ]",
         "costEur": 0.75,
+        "cost_price": 0.75,
         "retailPrice": 221,
+        "retail_price": 221,
         "stock": 5,
         "variantId": "cmuh0gbo800bu503enbu5n4v7",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -970,7 +1200,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gbo900by503e5p4is43t",
         "name": "DISCORD AGED ACCOUNTS [ 2021 ]",
         "costEur": 1,
+        "cost_price": 1,
         "retailPrice": 294,
+        "retail_price": 294,
         "stock": 5,
         "variantId": "cmuh0gbo900by503e5p4is43t",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -979,7 +1211,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gboa00c2503etgmv374z",
         "name": "DISCORD AGED ACCOUNTS [ 2020 ]",
         "costEur": 1.35,
+        "cost_price": 1.35,
         "retailPrice": 397,
+        "retail_price": 397,
         "stock": 8,
         "variantId": "cmuh0gboa00c2503etgmv374z",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -988,7 +1222,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gboa00c6503ehh4u8f3g",
         "name": "DISCORD AGED ACCOUNTS [ 2019 ]",
         "costEur": 1.95,
+        "cost_price": 1.95,
         "retailPrice": 574,
+        "retail_price": 574,
         "stock": 3,
         "variantId": "cmuh0gboa00c6503ehh4u8f3g",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -997,7 +1233,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gbob00ca503ehby3z4wl",
         "name": "DISCORD AGED ACCOUNTS [ 2018 ]",
         "costEur": 2.5,
+        "cost_price": 2.5,
         "retailPrice": 736,
+        "retail_price": 736,
         "stock": 2,
         "variantId": "cmuh0gbob00ca503ehby3z4wl",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -1006,7 +1244,9 @@
         "id": "cmuh0gbo600bi503eh65gozdq_cmuh0gboc00ce503enr4obm0m",
         "name": "DISCORD AGED ACCOUNTS [ 2017 ]",
         "costEur": 3.5,
+        "cost_price": 3.5,
         "retailPrice": 1030,
+        "retail_price": 1030,
         "stock": 4,
         "variantId": "cmuh0gboc00ce503enr4obm0m",
         "rawProductId": "cmuh0gbo600bi503eh65gozdq"
@@ -1015,7 +1255,9 @@
         "id": "cmur3p1jx005y10889z0j970c_cmur3p1jy00601088tx0zfnx8",
         "name": "1 Month",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 539,
         "variantId": "cmur3p1jy00601088tx0zfnx8",
         "rawProductId": "cmur3p1jx005y10889z0j970c"
@@ -1024,7 +1266,9 @@
         "id": "cmuh0gbl900a3503ed12uokzz_cmuh0gbla00a7503e5je14sue",
         "name": "3 Months",
         "costEur": 1.85,
+        "cost_price": 1.85,
         "retailPrice": 545,
+        "retail_price": 545,
         "stock": 128,
         "variantId": "cmuh0gbla00a7503e5je14sue",
         "rawProductId": "cmuh0gbl900a3503ed12uokzz"
@@ -1033,7 +1277,9 @@
         "id": "cmuh0gble00ac503edfpcc7ry_cmuh0gblf00ag503e28ko0qy7",
         "name": "1 Month",
         "costEur": 1.3,
+        "cost_price": 1.3,
         "retailPrice": 383,
+        "retail_price": 383,
         "stock": 139,
         "variantId": "cmuh0gblf00ag503e28ko0qy7",
         "rawProductId": "cmuh0gble00ac503edfpcc7ry"
@@ -1042,7 +1288,9 @@
         "id": "cmuh0gblj00al503eek57np7x_cmuh0gbll00ap503ep8jwl492",
         "name": "Server Boosts Bot [LIFETIME]",
         "costEur": 3.5,
+        "cost_price": 3.5,
         "retailPrice": 1030,
+        "retail_price": 1030,
         "stock": null,
         "variantId": "cmuh0gbll00ap503ep8jwl492",
         "rawProductId": "cmuh0gblj00al503eek57np7x"
@@ -1051,7 +1299,9 @@
         "id": "cmuu4etby00y09dtssqcmg2lr_cmv3zr51p0hkquir7xnf0sj02",
         "name": "3 [Months]",
         "costEur": 0.75,
+        "cost_price": 0.75,
         "retailPrice": 221,
+        "retail_price": 221,
         "stock": 14,
         "variantId": "cmv3zr51p0hkquir7xnf0sj02",
         "rawProductId": "cmuu4etby00y09dtssqcmg2lr"
@@ -1060,7 +1310,9 @@
         "id": "cmuu4k7ct00zf9dtsk4o97m67",
         "name": "500",
         "costEur": 1.45,
+        "cost_price": 1.45,
         "retailPrice": 427,
+        "retail_price": 427,
         "stock": 1,
         "rawProductId": "cmuu4k7ct00zf9dtsk4o97m67"
       },
@@ -1068,13 +1320,21 @@
         "id": "cmuu4lvqy00zv9dtsdde0q6oq",
         "name": "1000",
         "costEur": 3,
+        "cost_price": 3,
         "retailPrice": 883,
+        "retail_price": 883,
         "stock": 0,
         "rawProductId": "cmuu4lvqy00zv9dtsdde0q6oq"
       }
     ],
+    "cost_price": 0.28,
+    "retail_price": 74,
     "lowestRetailPrice": 74,
+    "currency": "INR",
+    "stock": 975,
     "totalStock": 975,
+    "totalStockCount": 975,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1102,7 +1362,9 @@
         "id": "cmuu47n8l00wg9dtsgx4jesho",
         "name": "1.100 TOOLS & METHODS",
         "costEur": 2.2,
+        "cost_price": 2.2,
         "retailPrice": 648,
+        "retail_price": 648,
         "stock": null,
         "rawProductId": "cmuu47n8l00wg9dtsgx4jesho"
       },
@@ -1110,7 +1372,9 @@
         "id": "cmuu4bpi900xm9dtsy9oco7hz",
         "name": "Discord Decorations Unlock all [METHOD]",
         "costEur": 1.99,
+        "cost_price": 1.99,
         "retailPrice": 586,
+        "retail_price": 586,
         "stock": null,
         "rawProductId": "cmuu4bpi900xm9dtsy9oco7hz"
       },
@@ -1118,13 +1382,21 @@
         "id": "cmuu498yl00wv9dts0v0527k9",
         "name": "Nitro (METHOD)",
         "costEur": 2,
+        "cost_price": 2,
         "retailPrice": 589,
+        "retail_price": 589,
         "stock": null,
         "rawProductId": "cmuu498yl00wv9dts0v0527k9"
       }
     ],
+    "cost_price": 2.2,
+    "retail_price": 586,
     "lowestRetailPrice": 586,
-    "totalStock": 0
+    "currency": "INR",
+    "stock": 0,
+    "totalStock": 0,
+    "totalStockCount": 0,
+    "inStock": false
   },
   {
     "id": "cmur3p1ll006s10886h2rvkp6",
@@ -1145,7 +1417,9 @@
         "id": "cmur3p1ll006s10886h2rvkp6_cmuj1vpso002r1rs99m7q4iqp",
         "name": "1 Day - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 60,
         "variantId": "cmuj1vpso002r1rs99m7q4iqp",
         "rawProductId": "cmur3p1ll006s10886h2rvkp6"
@@ -1154,7 +1428,9 @@
         "id": "cmur3p1ll006s10886h2rvkp6_cmuj1vrgc00p81rs9xyrfxmtv",
         "name": "7 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 15,
         "variantId": "cmuj1vrgc00p81rs9xyrfxmtv",
         "rawProductId": "cmur3p1ll006s10886h2rvkp6"
@@ -1163,7 +1439,9 @@
         "id": "cmur3p1ll006s10886h2rvkp6_cmur3p1lm006u10889wfvyxnh",
         "name": "30 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 1.25,
+        "cost_price": 1.25,
         "retailPrice": 368,
+        "retail_price": 368,
         "stock": 9,
         "variantId": "cmur3p1lm006u10889wfvyxnh",
         "rawProductId": "cmur3p1ll006s10886h2rvkp6"
@@ -1172,7 +1450,9 @@
         "id": "cmur3p1ll006s10886h2rvkp6_cmur3p1lr00731088oeuoj96k",
         "name": "Lifetime - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 3.25,
+        "cost_price": 3.25,
         "retailPrice": 957,
+        "retail_price": 957,
         "stock": 14,
         "variantId": "cmur3p1lr00731088oeuoj96k",
         "rawProductId": "cmur3p1ll006s10886h2rvkp6"
@@ -1181,14 +1461,22 @@
         "id": "cmur3p1ll006s10886h2rvkp6_cmuh0gc2500ix503e2bvx3bik",
         "name": "ChatGPT Plus / Go - 1 Month | Real Account",
         "costEur": 3.5,
+        "cost_price": 3.5,
         "retailPrice": 506,
+        "retail_price": 506,
         "stock": 63,
         "variantId": "cmuh0gc2500ix503e2bvx3bik",
         "rawProductId": "cmur3p1ll006s10886h2rvkp6"
       }
     ],
+    "cost_price": 0.55,
+    "retail_price": 162,
     "lowestRetailPrice": 162,
+    "currency": "INR",
+    "stock": 161,
     "totalStock": 161,
+    "totalStockCount": 161,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1219,7 +1507,9 @@
         "id": "cmus90bkm004ssknbvc148xrg_cmus90bko004usknb9p9lpp5n",
         "name": "1 Day - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 19,
         "variantId": "cmus90bko004usknb9p9lpp5n",
         "rawProductId": "cmus90bkm004ssknbvc148xrg"
@@ -1228,7 +1518,9 @@
         "id": "cmus90bks0051sknbfxp2tpja_cmus90bkt0053sknblpiovy0x",
         "name": "7 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 38,
         "variantId": "cmus90bkt0053sknblpiovy0x",
         "rawProductId": "cmus90bks0051sknbfxp2tpja"
@@ -1237,7 +1529,9 @@
         "id": "cmus90bkx005asknbms1rlp8o_cmus90bky005csknbc3qgap8m",
         "name": "30 Days - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 1.15,
+        "cost_price": 1.15,
         "retailPrice": 339,
+        "retail_price": 339,
         "stock": 20,
         "variantId": "cmus90bky005csknbc3qgap8m",
         "rawProductId": "cmus90bkx005asknbms1rlp8o"
@@ -1246,14 +1540,22 @@
         "id": "cmus90bl3005jsknbmzch4hrq_cmus90bl3005lsknbweoem6nm",
         "name": "Lifetime - [Code: https://quiteai-new.vercel.app/studio]",
         "costEur": 4.5,
+        "cost_price": 4.5,
         "retailPrice": 1325,
+        "retail_price": 1325,
         "stock": 20,
         "variantId": "cmus90bl3005lsknbweoem6nm",
         "rawProductId": "cmus90bl3005jsknbmzch4hrq"
       }
     ],
+    "cost_price": 0.25,
+    "retail_price": 74,
     "lowestRetailPrice": 74,
+    "currency": "INR",
+    "stock": 97,
     "totalStock": 97,
+    "totalStockCount": 97,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1275,14 +1577,22 @@
         "id": "cmuh0gbq700de503eo8zacjp3_cmuh0gbq800di503ev80wxj64",
         "name": "Gemini Pro+ (Link - 18 Months)",
         "costEur": 0.95,
+        "cost_price": 0.95,
         "retailPrice": 280,
+        "retail_price": 280,
         "stock": 127,
         "variantId": "cmuh0gbq800di503ev80wxj64",
         "rawProductId": "cmuh0gbq700de503eo8zacjp3"
       }
     ],
+    "cost_price": 0.95,
+    "retail_price": 280,
     "lowestRetailPrice": 280,
+    "currency": "INR",
+    "stock": 127,
     "totalStock": 127,
+    "totalStockCount": 127,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1304,14 +1614,22 @@
         "id": "cmuh0gb6p0040503ex7p1q3ku_cmuh0gb6q0044503e9kazf1h5",
         "name": "[LIFETIME]",
         "costEur": 0.55,
+        "cost_price": 0.55,
         "retailPrice": 162,
+        "retail_price": 162,
         "stock": 93,
         "variantId": "cmuh0gb6q0044503e9kazf1h5",
         "rawProductId": "cmuh0gb6p0040503ex7p1q3ku"
       }
     ],
+    "cost_price": 0.55,
+    "retail_price": 162,
     "lowestRetailPrice": 162,
+    "currency": "INR",
+    "stock": 93,
     "totalStock": 93,
+    "totalStockCount": 93,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1333,14 +1651,22 @@
         "id": "cmuh0gbe9006y503e58xsqnvr_cmuh0gbea0072503eclhxfpzf",
         "name": "ExpressVPN (PHONE) [LIFETIME]",
         "costEur": 0.13,
+        "cost_price": 0.13,
         "retailPrice": 38,
+        "retail_price": 38,
         "stock": 243,
         "variantId": "cmuh0gbea0072503eclhxfpzf",
         "rawProductId": "cmuh0gbe9006y503e58xsqnvr"
       }
     ],
+    "cost_price": 0.13,
+    "retail_price": 38,
     "lowestRetailPrice": 38,
+    "currency": "INR",
+    "stock": 243,
     "totalStock": 243,
+    "totalStockCount": 243,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1362,14 +1688,22 @@
         "id": "cmuh0gbk7009s503es8roofql_cmuh0gbk8009w503e5fi17o0z",
         "name": "Mullvad VPN [LIFETIME]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 80,
         "variantId": "cmuh0gbk8009w503e5fi17o0z",
         "rawProductId": "cmuh0gbk7009s503es8roofql"
       }
     ],
+    "cost_price": 0.65,
+    "retail_price": 191,
     "lowestRetailPrice": 191,
+    "currency": "INR",
+    "stock": 80,
     "totalStock": 80,
+    "totalStockCount": 80,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1391,7 +1725,9 @@
         "id": "cmuh0gccj00mx503ephfjpe1b_cmuh0gcck00n1503ezb4c631i",
         "name": "Duolingo [LIFETIME]",
         "costEur": 0.12,
+        "cost_price": 0.12,
         "retailPrice": 35,
+        "retail_price": 35,
         "stock": 74,
         "variantId": "cmuh0gcck00n1503ezb4c631i",
         "rawProductId": "cmuh0gccj00mx503ephfjpe1b"
@@ -1400,14 +1736,22 @@
         "id": "cmuh0gccj00mx503ephfjpe1b_cmv3phkvq0apsuir7p3kmdeay",
         "name": "12m [ KEY-LINK ]",
         "costEur": 0.99,
+        "cost_price": 0.99,
         "retailPrice": 291,
+        "retail_price": 291,
         "stock": 13,
         "variantId": "cmv3phkvq0apsuir7p3kmdeay",
         "rawProductId": "cmuh0gccj00mx503ephfjpe1b"
       }
     ],
+    "cost_price": 0.12,
+    "retail_price": 35,
     "lowestRetailPrice": 35,
+    "currency": "INR",
+    "stock": 87,
     "totalStock": 87,
+    "totalStockCount": 87,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1429,14 +1773,22 @@
         "id": "cmuh0gbrb00e7503epv71fyh8_cmuh0gbrd00eb503ewoqt2qm8",
         "name": "Deezer [LIFETIME]",
         "costEur": 0.12,
+        "cost_price": 0.12,
         "retailPrice": 35,
+        "retail_price": 35,
         "stock": 21,
         "variantId": "cmuh0gbrd00eb503ewoqt2qm8",
         "rawProductId": "cmuh0gbrb00e7503epv71fyh8"
       }
     ],
+    "cost_price": 0.12,
+    "retail_price": 35,
     "lowestRetailPrice": 35,
+    "currency": "INR",
+    "stock": 21,
     "totalStock": 21,
+    "totalStockCount": 21,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1458,14 +1810,22 @@
         "id": "cmuh0gcgd00o5503e3sbwloie_cmuh0gcge00o9503ey1zhb5tp",
         "name": "UFC [LIFETIME]",
         "costEur": 0.2,
+        "cost_price": 0.2,
         "retailPrice": 59,
+        "retail_price": 59,
         "stock": 35,
         "variantId": "cmuh0gcge00o9503ey1zhb5tp",
         "rawProductId": "cmuh0gcgd00o5503e3sbwloie"
       }
     ],
+    "cost_price": 0.2,
+    "retail_price": 59,
     "lowestRetailPrice": 59,
+    "currency": "INR",
+    "stock": 35,
     "totalStock": 35,
+    "totalStockCount": 35,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1490,7 +1850,9 @@
         "id": "cmuh0gbda006n503e0ze0r0v4_cmuh0gbda006r503e08lejvre",
         "name": "Capcut [Lifetime]",
         "costEur": 0.39,
+        "cost_price": 0.39,
         "retailPrice": 115,
+        "retail_price": 115,
         "stock": 151,
         "variantId": "cmuh0gbda006r503e08lejvre",
         "rawProductId": "cmuh0gbda006n503e0ze0r0v4"
@@ -1499,14 +1861,22 @@
         "id": "cmuh0gbpf00d3503eq45rya9k_cmuh0gbpg00d7503eqzj3jj0k",
         "name": "Private Lifetime CapCut - [Code: https://elitekeys.site/]",
         "costEur": 1.75,
+        "cost_price": 1.75,
         "retailPrice": 515,
+        "retail_price": 515,
         "stock": 96,
         "variantId": "cmuh0gbpg00d7503eqzj3jj0k",
         "rawProductId": "cmuh0gbpf00d3503eq45rya9k"
       }
     ],
+    "cost_price": 0.39,
+    "retail_price": 115,
     "lowestRetailPrice": 115,
+    "currency": "INR",
+    "stock": 247,
     "totalStock": 247,
+    "totalStockCount": 247,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1528,14 +1898,22 @@
         "id": "cmuh0gbub00f4503egkcf4o04_cmuh0gbuc00f8503e98wfozuq",
         "name": "Canva Premium FA [3 Years]",
         "costEur": 0.75,
+        "cost_price": 0.75,
         "retailPrice": 221,
+        "retail_price": 221,
         "stock": 21,
         "variantId": "cmuh0gbuc00f8503e98wfozuq",
         "rawProductId": "cmuh0gbub00f4503egkcf4o04"
       }
     ],
+    "cost_price": 0.75,
+    "retail_price": 221,
     "lowestRetailPrice": 221,
+    "currency": "INR",
+    "stock": 21,
     "totalStock": 21,
+    "totalStockCount": 21,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1557,14 +1935,22 @@
         "id": "cmuh0gcem00nj503epq18nfd4_cmuh0gcen00nn503emivt8fyx",
         "name": "Wondershare [LIFETIME]",
         "costEur": 0.1,
+        "cost_price": 0.1,
         "retailPrice": 29,
+        "retail_price": 29,
         "stock": 66,
         "variantId": "cmuh0gcen00nn503emivt8fyx",
         "rawProductId": "cmuh0gcem00nj503epq18nfd4"
       }
     ],
+    "cost_price": 0.1,
+    "retail_price": 29,
     "lowestRetailPrice": 29,
+    "currency": "INR",
+    "stock": 66,
     "totalStock": 66,
+    "totalStockCount": 66,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1586,14 +1972,22 @@
         "id": "cmuh0gch300og503e4659yzfj_cmuh0gch500ok503e0zitdzrk",
         "name": "Uber Eats (Random Offers)",
         "costEur": 2.5,
+        "cost_price": 2.5,
         "retailPrice": 736,
+        "retail_price": 736,
         "stock": 74,
         "variantId": "cmuh0gch500ok503e0zitdzrk",
         "rawProductId": "cmuh0gch300og503e4659yzfj"
       }
     ],
+    "cost_price": 2.5,
+    "retail_price": 736,
     "lowestRetailPrice": 736,
-    "totalStock": 74
+    "currency": "INR",
+    "stock": 74,
+    "totalStock": 74,
+    "totalStockCount": 74,
+    "inStock": true
   },
   {
     "id": "cmuj1vqlu00cc1rs9hs537vd1",
@@ -1638,7 +2032,9 @@
         "id": "cmuj1vqlu00cc1rs9hs537vd1_cmuj1vqlw00ce1rs96882g5c1",
         "name": "3-10 Skins [Ranked Ready]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": null,
         "variantId": "cmuj1vqlw00ce1rs96882g5c1",
         "rawProductId": "cmuj1vqlu00cc1rs9hs537vd1"
@@ -1647,7 +2043,9 @@
         "id": "cmuj1vqm100cl1rs9jg0ibdpn_cmuj1vqm100cn1rs9kkgabqnt",
         "name": "10-20 Skins [Ranked Ready]",
         "costEur": 1.5,
+        "cost_price": 1.5,
         "retailPrice": 442,
+        "retail_price": 442,
         "stock": null,
         "variantId": "cmuj1vqm100cn1rs9kkgabqnt",
         "rawProductId": "cmuj1vqm100cl1rs9jg0ibdpn"
@@ -1656,7 +2054,9 @@
         "id": "cmuj1vqm600cu1rs9trkzwbln_cmuj1vqm700cw1rs9cbo61w08",
         "name": "20-50 Skins [Ranked Ready]",
         "costEur": 2.75,
+        "cost_price": 2.75,
         "retailPrice": 810,
+        "retail_price": 810,
         "stock": null,
         "variantId": "cmuj1vqm700cw1rs9cbo61w08",
         "rawProductId": "cmuj1vqm600cu1rs9trkzwbln"
@@ -1665,7 +2065,9 @@
         "id": "cmuj1vqmv00d51rs9hmr3bux4_cmuj1vqmw00d71rs96prms1t3",
         "name": "50-100 Skins [OG Outfits Included]",
         "costEur": 3.45,
+        "cost_price": 3.45,
         "retailPrice": 1016,
+        "retail_price": 1016,
         "stock": null,
         "variantId": "cmuj1vqmw00d71rs96prms1t3",
         "rawProductId": "cmuj1vqmv00d51rs9hmr3bux4"
@@ -1674,7 +2076,9 @@
         "id": "cmuj1vqqk00e81rs9q030q34a_cmuj1vqql00ea1rs9he3hf2ka",
         "name": "100-150 Skins [OG Outfits Included]",
         "costEur": 7.5,
+        "cost_price": 7.5,
         "retailPrice": 2208,
+        "retail_price": 2208,
         "stock": null,
         "variantId": "cmuj1vqql00ea1rs9he3hf2ka",
         "rawProductId": "cmuj1vqqk00e81rs9q030q34a"
@@ -1683,7 +2087,9 @@
         "id": "cmuj1vqqp00eh1rs9m09io1du_cmuj1vqqq00ej1rs9rueye1a3",
         "name": "100-250 Skins [Tryhard Skins Only]",
         "costEur": 11.5,
+        "cost_price": 11.5,
         "retailPrice": 3386,
+        "retail_price": 3386,
         "stock": null,
         "variantId": "cmuj1vqqq00ej1rs9rueye1a3",
         "rawProductId": "cmuj1vqqp00eh1rs9m09io1du"
@@ -1692,7 +2098,9 @@
         "id": "cmuj1vqri00es1rs9tbhce5u3_cmuj1vqrj00eu1rs9gxcon5ac",
         "name": "Leviathan Axe + 100-200 Skins",
         "costEur": 15.85,
+        "cost_price": 15.85,
         "retailPrice": 4666,
+        "retail_price": 4666,
         "stock": null,
         "variantId": "cmuj1vqrj00eu1rs9gxcon5ac",
         "rawProductId": "cmuj1vqri00es1rs9tbhce5u3"
@@ -1701,7 +2109,9 @@
         "id": "cmuj1vqro00f11rs9oazjeb72_cmuj1vqrp00f31rs94ich3a4a",
         "name": "250-400 Skins [OG Outfits Included]",
         "costEur": 18,
+        "cost_price": 18,
         "retailPrice": 5299,
+        "retail_price": 5299,
         "stock": null,
         "variantId": "cmuj1vqrp00f31rs94ich3a4a",
         "rawProductId": "cmuj1vqro00f11rs9oazjeb72"
@@ -1710,14 +2120,22 @@
         "id": "cmuh0gcfi00nu503ebuv0untu_cmuh0gcfj00ny503es1jyb6m8",
         "name": "Minty Axe + 100-250 Skins [OG Outfits Included]",
         "costEur": 22.5,
+        "cost_price": 22.5,
         "retailPrice": 6624,
+        "retail_price": 6624,
         "stock": null,
         "variantId": "cmuh0gcfj00ny503es1jyb6m8",
         "rawProductId": "cmuh0gcfi00nu503ebuv0untu"
       }
     ],
+    "cost_price": 0.65,
+    "retail_price": 191,
     "lowestRetailPrice": 191,
+    "currency": "INR",
+    "stock": 0,
     "totalStock": 0,
+    "totalStockCount": 0,
+    "inStock": false,
     "badge": "BEST VALUE"
   },
   {
@@ -1757,7 +2175,9 @@
         "id": "cmuh0gd3500wl503ebkm0e1j5_cmuh0gd3600wp503eh7leq4p1",
         "name": "Trail Blazer",
         "costEur": 0.16,
+        "cost_price": 0.16,
         "retailPrice": 47,
+        "retail_price": 47,
         "stock": 56,
         "variantId": "cmuh0gd3600wp503eh7leq4p1",
         "rawProductId": "cmuh0gd3500wl503ebkm0e1j5"
@@ -1766,7 +2186,9 @@
         "id": "cmuh0gd4y00x7503evzutmaky_cmuh0gd4z00xb503eaarlixg1",
         "name": "Neo Versa",
         "costEur": 0.18,
+        "cost_price": 0.18,
         "retailPrice": 53,
+        "retail_price": 53,
         "stock": 13,
         "variantId": "cmuh0gd4z00xb503eaarlixg1",
         "rawProductId": "cmuh0gd4y00x7503evzutmaky"
@@ -1775,7 +2197,9 @@
         "id": "cmuh0gd4300ww503ek660m0lq_cmuh0gd4400x0503ehoxz9xl8",
         "name": "Rogue Agent",
         "costEur": 0.24,
+        "cost_price": 0.24,
         "retailPrice": 71,
+        "retail_price": 71,
         "stock": 22,
         "variantId": "cmuh0gd4400x0503ehoxz9xl8",
         "rawProductId": "cmuh0gd4300ww503ek660m0lq"
@@ -1784,7 +2208,9 @@
         "id": "cmuh0gd0700vo503em7lv4qfa_cmuh0gd0800vs503erke7yunm",
         "name": "Take The L",
         "costEur": 0.45,
+        "cost_price": 0.45,
         "retailPrice": 132,
+        "retail_price": 132,
         "stock": 28,
         "variantId": "cmuh0gd0800vs503erke7yunm",
         "rawProductId": "cmuh0gd0700vo503em7lv4qfa"
@@ -1793,7 +2219,9 @@
         "id": "cmuh0gd1a00vz503esnrtesxi_cmuh0gd1b00w3503e06568uz2",
         "name": "Omega",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 9,
         "variantId": "cmuh0gd1b00w3503e06568uz2",
         "rawProductId": "cmuh0gd1a00vz503esnrtesxi"
@@ -1802,7 +2230,9 @@
         "id": "cmuh0gd2800wa503ea5sfyss7_cmuh0gd2900we503exgikqj4w",
         "name": "The Reaper",
         "costEur": 0.85,
+        "cost_price": 0.85,
         "retailPrice": 250,
+        "retail_price": 250,
         "stock": 24,
         "variantId": "cmuh0gd2900we503exgikqj4w",
         "rawProductId": "cmuh0gd2800wa503ea5sfyss7"
@@ -1811,14 +2241,22 @@
         "id": "cmuh0gcya00v2503e3m0k8nlg_cmuh0gcyb00v6503ern8igy9e",
         "name": "Blue Squire / Floss",
         "costEur": 1.15,
+        "cost_price": 1.15,
         "retailPrice": 339,
+        "retail_price": 339,
         "stock": 4,
         "variantId": "cmuh0gcyb00v6503ern8igy9e",
         "rawProductId": "cmuh0gcya00v2503e3m0k8nlg"
       }
     ],
+    "cost_price": 0.16,
+    "retail_price": 47,
     "lowestRetailPrice": 47,
+    "currency": "INR",
+    "stock": 156,
     "totalStock": 156,
+    "totalStockCount": 156,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -1846,7 +2284,9 @@
         "id": "cmuj1vqvt00hm1rs96ezh7wc6_cmuj1vqvu00ho1rs9hluvpiqc",
         "name": "800-1,200 V-Bucks",
         "costEur": 2.65,
+        "cost_price": 2.65,
         "retailPrice": 780,
+        "retail_price": 780,
         "stock": null,
         "variantId": "cmuj1vqvu00ho1rs9hluvpiqc",
         "rawProductId": "cmuj1vqvt00hm1rs96ezh7wc6"
@@ -1855,7 +2295,9 @@
         "id": "cmuj1vqvy00hv1rs9sosi1wpk_cmuj1vqvz00hx1rs92rvr81s1",
         "name": "1,500-2,800 V-Bucks",
         "costEur": 4.5,
+        "cost_price": 4.5,
         "retailPrice": 1325,
+        "retail_price": 1325,
         "stock": null,
         "variantId": "cmuj1vqvz00hx1rs92rvr81s1",
         "rawProductId": "cmuj1vqvy00hv1rs9sosi1wpk"
@@ -1864,14 +2306,22 @@
         "id": "cmuj1vqw300i41rs9phnl23rr_cmuj1vqw400i61rs9gxvdk9au",
         "name": "5,000-7,000 V-Bucks",
         "costEur": 22.5,
+        "cost_price": 22.5,
         "retailPrice": 6624,
+        "retail_price": 6624,
         "stock": null,
         "variantId": "cmuj1vqw400i61rs9gxvdk9au",
         "rawProductId": "cmuj1vqw300i41rs9phnl23rr"
       }
     ],
+    "cost_price": 2.65,
+    "retail_price": 780,
     "lowestRetailPrice": 780,
-    "totalStock": 0
+    "currency": "INR",
+    "stock": 0,
+    "totalStock": 0,
+    "totalStockCount": 0,
+    "inStock": false
   },
   {
     "id": "cmuj1vqt100fh1rs9at72bzq0",
@@ -1907,7 +2357,9 @@
         "id": "cmuj1vqt100fh1rs9at72bzq0_cmuj1vqt200fj1rs96e0mpwej",
         "name": "Level 1-20 [Ranked Ready]",
         "costEur": 2.75,
+        "cost_price": 2.75,
         "retailPrice": 810,
+        "retail_price": 810,
         "stock": null,
         "variantId": "cmuj1vqt200fj1rs96e0mpwej",
         "rawProductId": "cmuj1vqt100fh1rs9at72bzq0"
@@ -1916,7 +2368,9 @@
         "id": "cmuj1vqt700fq1rs9s81y1ind_cmuj1vqt700fs1rs9gt12pjib",
         "name": "Skins + Knife [1,000 VP]",
         "costEur": 6.85,
+        "cost_price": 6.85,
         "retailPrice": 2017,
+        "retail_price": 2017,
         "stock": null,
         "variantId": "cmuj1vqt700fs1rs9gt12pjib",
         "rawProductId": "cmuj1vqt700fq1rs9s81y1ind"
@@ -1925,7 +2379,9 @@
         "id": "cmuj1vqtc00fz1rs98pdl4p3g_cmuj1vqtc00g11rs9qouo5wxf",
         "name": "Level 20-50 Skins + Knife [2,000-5,000 VP]",
         "costEur": 8.95,
+        "cost_price": 8.95,
         "retailPrice": 2635,
+        "retail_price": 2635,
         "stock": null,
         "variantId": "cmuj1vqtc00g11rs9qouo5wxf",
         "rawProductId": "cmuj1vqtc00fz1rs98pdl4p3g"
@@ -1934,7 +2390,9 @@
         "id": "cmuj1vqth00g81rs9lpq3fg5l_cmuj1vqti00ga1rs9oyzoo1le",
         "name": "Skins + Knife [3,000-10,000 VP]",
         "costEur": 13.5,
+        "cost_price": 13.5,
         "retailPrice": 3974,
+        "retail_price": 3974,
         "stock": null,
         "variantId": "cmuj1vqti00ga1rs9oyzoo1le",
         "rawProductId": "cmuj1vqth00g81rs9lpq3fg5l"
@@ -1943,7 +2401,9 @@
         "id": "cmuj1vqv300h41rs9h60ply09_cmuj1vqv400h61rs9msbaecqs",
         "name": "Skins + Knife [5,000-20,000 VP]",
         "costEur": 20,
+        "cost_price": 20,
         "retailPrice": 5888,
+        "retail_price": 5888,
         "stock": null,
         "variantId": "cmuj1vqv400h61rs9msbaecqs",
         "rawProductId": "cmuj1vqv300h41rs9h60ply09"
@@ -1952,14 +2412,22 @@
         "id": "cmuj1vqv800hd1rs9u8dll2lk_cmuj1vqv900hf1rs9hrpso3d2",
         "name": "Skins + Knife [30,000 VP]",
         "costEur": 32.9,
+        "cost_price": 32.9,
         "retailPrice": 9686,
+        "retail_price": 9686,
         "stock": null,
         "variantId": "cmuj1vqv900hf1rs9hrpso3d2",
         "rawProductId": "cmuj1vqv800hd1rs9u8dll2lk"
       }
     ],
+    "cost_price": 2.75,
+    "retail_price": 810,
     "lowestRetailPrice": 810,
-    "totalStock": 0
+    "currency": "INR",
+    "stock": 0,
+    "totalStock": 0,
+    "totalStockCount": 0,
+    "inStock": false
   },
   {
     "id": "cmuj1vrfu00of1rs9n1mcp0q5",
@@ -1986,7 +2454,9 @@
         "id": "cmuj1vrfu00of1rs9n1mcp0q5_cmuj1vrfv00oh1rs9thg8krir",
         "name": "Level 20-100 [Ranked Ready]",
         "costEur": 1.99,
+        "cost_price": 1.99,
         "retailPrice": 586,
+        "retail_price": 586,
         "stock": 85,
         "variantId": "cmuj1vrfv00oh1rs9thg8krir",
         "rawProductId": "cmuj1vrfu00of1rs9n1mcp0q5"
@@ -1995,7 +2465,9 @@
         "id": "cmuj1vrg000oo1rs9klz8agi7_cmuj1vrg100oq1rs9o6zr6m2i",
         "name": "Level 100-300",
         "costEur": 10.99,
+        "cost_price": 10.99,
         "retailPrice": 3235,
+        "retail_price": 3235,
         "stock": 99,
         "variantId": "cmuj1vrg100oq1rs9o6zr6m2i",
         "rawProductId": "cmuj1vrg000oo1rs9klz8agi7"
@@ -2004,14 +2476,22 @@
         "id": "cmuj1vrg500ox1rs9gbjg04rr_cmuj1vrg600oz1rs984s0eh48",
         "name": "Level 300-500",
         "costEur": 18.99,
+        "cost_price": 18.99,
         "retailPrice": 5591,
+        "retail_price": 5591,
         "stock": 23,
         "variantId": "cmuj1vrg600oz1rs984s0eh48",
         "rawProductId": "cmuj1vrg500ox1rs9gbjg04rr"
       }
     ],
+    "cost_price": 1.99,
+    "retail_price": 586,
     "lowestRetailPrice": 586,
-    "totalStock": 207
+    "currency": "INR",
+    "stock": 207,
+    "totalStock": 207,
+    "totalStockCount": 207,
+    "inStock": true
   },
   {
     "id": "cmuh0gc6700ks503e7h3dwi8z",
@@ -2041,7 +2521,9 @@
         "id": "cmuh0gc6700ks503e7h3dwi8z_cmuh0gc6800kw503eq45hhrxx",
         "name": "1,000-3,000 Trophies",
         "costEur": 0.7,
+        "cost_price": 0.7,
         "retailPrice": 206,
+        "retail_price": 206,
         "stock": 25,
         "variantId": "cmuh0gc6800kw503eq45hhrxx",
         "rawProductId": "cmuh0gc6700ks503e7h3dwi8z"
@@ -2050,7 +2532,9 @@
         "id": "cmuh0gc7100l3503e6s8jtolq_cmuh0gc7200l7503eqphh9hoe",
         "name": "2,500-5,000 Trophies",
         "costEur": 1.35,
+        "cost_price": 1.35,
         "retailPrice": 397,
+        "retail_price": 397,
         "stock": 20,
         "variantId": "cmuh0gc7200l7503eqphh9hoe",
         "rawProductId": "cmuh0gc7100l3503e6s8jtolq"
@@ -2059,7 +2543,9 @@
         "id": "cmuh0gc7y00le503eln64d5o2_cmuh0gc7z00li503e3gkufqxs",
         "name": "5,000-8,000 Trophies",
         "costEur": 2.5,
+        "cost_price": 2.5,
         "retailPrice": 736,
+        "retail_price": 736,
         "stock": null,
         "variantId": "cmuh0gc7z00li503e3gkufqxs",
         "rawProductId": "cmuh0gc7y00le503eln64d5o2"
@@ -2068,14 +2554,22 @@
         "id": "cmuh0gc8z00lp503ew5qgqxro_cmuh0gc9000lt503e7elybo37",
         "name": "10,000-12,500 Trophies",
         "costEur": 3.85,
+        "cost_price": 3.85,
         "retailPrice": 1133,
+        "retail_price": 1133,
         "stock": 35,
         "variantId": "cmuh0gc9000lt503e7elybo37",
         "rawProductId": "cmuh0gc8z00lp503ew5qgqxro"
       }
     ],
+    "cost_price": 0.7,
+    "retail_price": 206,
     "lowestRetailPrice": 206,
+    "currency": "INR",
+    "stock": 80,
     "totalStock": 80,
+    "totalStockCount": 80,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -2109,7 +2603,9 @@
         "id": "cmuh0gbwa00g8503el9ntqb8z_cmuh0gbwb00gc503ekq0k59g2",
         "name": "500-1,000 Robux",
         "costEur": 1.75,
+        "cost_price": 1.75,
         "retailPrice": 515,
+        "retail_price": 515,
         "stock": 17,
         "variantId": "cmuh0gbwb00gc503ekq0k59g2",
         "rawProductId": "cmuh0gbwa00g8503el9ntqb8z"
@@ -2118,7 +2614,9 @@
         "id": "cmuh0gbx400gj503ewoqca4fd_cmuh0gbx600gn503ec9kpjrnb",
         "name": "1,000-2,500 Robux",
         "costEur": 3,
+        "cost_price": 3,
         "retailPrice": 883,
+        "retail_price": 883,
         "stock": 14,
         "variantId": "cmuh0gbx600gn503ec9kpjrnb",
         "rawProductId": "cmuh0gbx400gj503ewoqca4fd"
@@ -2127,7 +2625,9 @@
         "id": "cmuh0gbxy00gu503emawitbdz_cmuh0gbxz00gy503el7qvc5p9",
         "name": "2,500-5,000 Robux",
         "costEur": 5.5,
+        "cost_price": 5.5,
         "retailPrice": 1619,
+        "retail_price": 1619,
         "stock": 10,
         "variantId": "cmuh0gbxz00gy503el7qvc5p9",
         "rawProductId": "cmuh0gbxy00gu503emawitbdz"
@@ -2136,7 +2636,9 @@
         "id": "cmuh0gbzr00hg503eaokzfamb_cmuh0gbzt00hk503eraevhd84",
         "name": "10,000-20,000 Robux",
         "costEur": 15,
+        "cost_price": 15,
         "retailPrice": 4416,
+        "retail_price": 4416,
         "stock": null,
         "variantId": "cmuh0gbzt00hk503eraevhd84",
         "rawProductId": "cmuh0gbzr00hg503eaokzfamb"
@@ -2145,14 +2647,22 @@
         "id": "cmuh0gbzx00hp503eump5yhiy_cmuh0gbzy00ht503eikju7x1a",
         "name": "20,000-50,000 Robux",
         "costEur": 22.5,
+        "cost_price": 22.5,
         "retailPrice": 6624,
+        "retail_price": 6624,
         "stock": null,
         "variantId": "cmuh0gbzy00ht503eikju7x1a",
         "rawProductId": "cmuh0gbzx00hp503eump5yhiy"
       }
     ],
+    "cost_price": 1.75,
+    "retail_price": 515,
     "lowestRetailPrice": 515,
-    "totalStock": 41
+    "currency": "INR",
+    "stock": 41,
+    "totalStock": 41,
+    "totalStockCount": 41,
+    "inStock": true
   },
   {
     "id": "cmuh0gbaf0058503e6eyddd6c",
@@ -2173,14 +2683,22 @@
         "id": "cmuh0gbaf0058503e6eyddd6c_cmuh0gbah005c503ecrnfpts9",
         "name": "Minecraft Account [LIFETIME]",
         "costEur": 4.45,
+        "cost_price": 4.45,
         "retailPrice": 1310,
+        "retail_price": 1310,
         "stock": 14,
         "variantId": "cmuh0gbah005c503ecrnfpts9",
         "rawProductId": "cmuh0gbaf0058503e6eyddd6c"
       }
     ],
+    "cost_price": 4.45,
+    "retail_price": 1310,
     "lowestRetailPrice": 1310,
-    "totalStock": 14
+    "currency": "INR",
+    "stock": 14,
+    "totalStock": 14,
+    "totalStockCount": 14,
+    "inStock": true
   },
   {
     "id": "cmuh0gbhe008m503efe4vl75b",
@@ -2201,14 +2719,22 @@
         "id": "cmuh0gbhe008m503efe4vl75b_cmuh0gbhf008q503eapni04ud",
         "name": "Steam [LIFETIME]",
         "costEur": 0.05,
+        "cost_price": 0.05,
         "retailPrice": 15,
+        "retail_price": 15,
         "stock": 2462,
         "variantId": "cmuh0gbhf008q503eapni04ud",
         "rawProductId": "cmuh0gbhe008m503efe4vl75b"
       }
     ],
+    "cost_price": 0.05,
+    "retail_price": 15,
     "lowestRetailPrice": 15,
+    "currency": "INR",
+    "stock": 2462,
     "totalStock": 2462,
+    "totalStockCount": 2462,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -2230,14 +2756,22 @@
         "id": "cmuh0gbmg00aw503exi65f10v_cmuh0gbmi00b0503ew4mpx9a9",
         "name": "Fivem Ready Account [Full Access]",
         "costEur": 0.01,
+        "cost_price": 0.01,
         "retailPrice": 3,
+        "retail_price": 3,
         "stock": 3784,
         "variantId": "cmuh0gbmi00b0503ew4mpx9a9",
         "rawProductId": "cmuh0gbmg00aw503exi65f10v"
       }
     ],
+    "cost_price": 0.01,
+    "retail_price": 3,
     "lowestRetailPrice": 3,
+    "currency": "INR",
+    "stock": 3784,
     "totalStock": 3784,
+    "totalStockCount": 3784,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -2259,13 +2793,21 @@
         "id": "cmun5b4dw00xietklw07p30v7",
         "name": "Level 2",
         "costEur": 0.25,
+        "cost_price": 0.25,
         "retailPrice": 74,
+        "retail_price": 74,
         "stock": 4,
         "rawProductId": "cmun5b4dw00xietklw07p30v7"
       }
     ],
+    "cost_price": 0.25,
+    "retail_price": 74,
     "lowestRetailPrice": 74,
+    "currency": "INR",
+    "stock": 4,
     "totalStock": 4,
+    "totalStockCount": 4,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -2287,13 +2829,21 @@
         "id": "cmutwzuk0008fncf0xjoyoqfc",
         "name": "OnlyFans Accounts [RANDOM]",
         "costEur": 0.65,
+        "cost_price": 0.65,
         "retailPrice": 191,
+        "retail_price": 191,
         "stock": 4,
         "rawProductId": "cmutwzuk0008fncf0xjoyoqfc"
       }
     ],
+    "cost_price": 0.65,
+    "retail_price": 191,
     "lowestRetailPrice": 191,
+    "currency": "INR",
+    "stock": 4,
     "totalStock": 4,
+    "totalStockCount": 4,
+    "inStock": true,
     "badge": "BEST VALUE"
   },
   {
@@ -2315,13 +2865,21 @@
         "id": "cmutx0do600c9ncf020k1iwg2",
         "name": "PornHub Accounts [RANDOM]",
         "costEur": 0.85,
+        "cost_price": 0.85,
         "retailPrice": 250,
+        "retail_price": 250,
         "stock": 13,
         "rawProductId": "cmutx0do600c9ncf020k1iwg2"
       }
     ],
+    "cost_price": 0.85,
+    "retail_price": 250,
     "lowestRetailPrice": 250,
+    "currency": "INR",
+    "stock": 13,
     "totalStock": 13,
+    "totalStockCount": 13,
+    "inStock": true,
     "badge": "BEST VALUE"
   }
 ]

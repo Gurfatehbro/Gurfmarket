@@ -87,13 +87,13 @@ function ProductCard({
   product: ResellerProduct;
   onOrder: (p: ResellerProduct) => void;
 }) {
-  const hasVariants = product.variants.length > 0;
+  const hasVariants = product.variants && product.variants.length > 0;
   const minPrice = hasVariants
-    ? Math.min(...product.variants.map((v) => v.retail_price))
-    : product.retail_price;
+    ? Math.min(...product.variants.map((v) => Number(v.retail_price ?? v.retailPrice ?? 0)))
+    : Number(product.retail_price ?? product.lowestRetailPrice ?? 0);
   const maxPrice = hasVariants
-    ? Math.max(...product.variants.map((v) => v.retail_price))
-    : product.retail_price;
+    ? Math.max(...product.variants.map((v) => Number(v.retail_price ?? v.retailPrice ?? 0)))
+    : Number(product.retail_price ?? product.lowestRetailPrice ?? 0);
 
   const versionCount = product.variants.length || 1;
   const versionText = `${versionCount} ${versionCount === 1 ? "version" : "versions"}`;
@@ -549,7 +549,7 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
                       {product.name}
                     </span>
                     <span className="rounded bg-[#22c55e] px-1.5 py-0.5 text-[10px] font-extrabold text-black">
-                      ₹{product.retail_price.toLocaleString("en-IN")}
+                      ₹{Number(product.retail_price ?? product.lowestRetailPrice ?? product.variants?.[0]?.retail_price ?? product.variants?.[0]?.retailPrice ?? 0).toLocaleString("en-IN")}
                     </span>
                   </div>
                 </Link>
@@ -594,7 +594,7 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
           </span>
           <span className="text-white/40">•</span>
           <span className="font-semibold text-emerald-400">
-            From ₹{current.retail_price.toLocaleString("en-IN")}
+            From ₹{Number(current.retail_price ?? current.lowestRetailPrice ?? current.variants?.[0]?.retail_price ?? current.variants?.[0]?.retailPrice ?? 0).toLocaleString("en-IN")}
           </span>
           <ArrowRight className="size-3 text-[#22c55e] transition-transform group-hover:translate-x-0.5" />
         </Link>
@@ -1749,7 +1749,7 @@ function Index() {
                             </div>
                           </div>
                           <span className="shrink-0 font-display text-sm font-bold text-white">
-                            ₹{v.retail_price.toLocaleString("en-IN")}
+                            ₹{Number(v.retail_price ?? v.retailPrice ?? 0).toLocaleString("en-IN")}
                           </span>
                         </button>
                       );

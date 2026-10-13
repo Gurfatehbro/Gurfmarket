@@ -3,6 +3,7 @@ import { fetchResellerBalance } from "./reseller-api";
 
 export interface StoreConfig {
   customPrices: Record<string, number>;
+  customNames?: Record<string, string> | undefined;
   customStock: Record<string, number>;
   markupMultiplier: number;
   eurToInrRate: number;
@@ -33,6 +34,7 @@ export interface StoreConfig {
 
 const DEFAULT_CONFIG: StoreConfig = {
   customPrices: { "ChatGPT Plus / Go - 1 Month | Real Account": 506 },
+  customNames: {},
   customStock: {},
   markupMultiplier: 3.2,
   eurToInrRate: 92,
@@ -141,6 +143,7 @@ export const getPublicStoreConfig = createServerFn({ method: "GET" }).handler(
     const config = await readConfigOnServer();
     return {
       customPrices: config.customPrices,
+      customNames: config.customNames || {},
       customStock: config.customStock,
       announcement: config.announcement,
       supportContacts: config.supportContacts,
@@ -200,6 +203,7 @@ export const updateStoreConfig = createServerFn({ method: "POST" })
       ...current,
       ...data.config,
       customPrices: data.config.customPrices ?? current.customPrices,
+      customNames: data.config.customNames ?? current.customNames ?? {},
       customStock: data.config.customStock ?? current.customStock,
       announcement: data.config.announcement ?? current.announcement,
       supportContacts: data.config.supportContacts ?? current.supportContacts,
