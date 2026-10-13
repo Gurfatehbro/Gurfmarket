@@ -23,7 +23,9 @@ import {
   ListFilter,
   Lock,
   MessageSquare,
+  MoreVertical,
   Music,
+  FileText,
   Pause,
   Play,
   Quote,
@@ -505,19 +507,19 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
             zIndex = 30;
             opacity = 1;
           } else if (offset === -1) {
-            transform = "translate3d(-108%, 18%, 0) scale(0.74) rotate(-9deg)";
+            transform = "translate3d(-88%, 14%, 0) scale(0.78) rotate(-7deg)";
             zIndex = 20;
             opacity = 0.88;
           } else if (offset === 1) {
-            transform = "translate3d(8%, 18%, 0) scale(0.74) rotate(9deg)";
+            transform = "translate3d(-12%, 14%, 0) scale(0.78) rotate(7deg)";
             zIndex = 20;
             opacity = 0.88;
           } else if (offset === -2) {
-            transform = "translate3d(-155%, 34%, 0) scale(0.52) rotate(-16deg)";
+            transform = "translate3d(-120%, 28%, 0) scale(0.55) rotate(-14deg)";
             zIndex = 10;
             opacity = 0;
           } else if (offset === 2) {
-            transform = "translate3d(55%, 34%, 0) scale(0.52) rotate(16deg)";
+            transform = "translate3d(20%, 28%, 0) scale(0.55) rotate(14deg)";
             zIndex = 10;
             opacity = 0;
           }
@@ -525,7 +527,7 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
           return (
             <div
               key={product.id}
-              className="absolute left-1/2 top-[5%] w-[56%] transition-all duration-700 ease-out"
+              className="absolute left-1/2 top-[5%] w-[64%] sm:w-[56%] transition-all duration-700 ease-out"
               style={{
                 transform,
                 zIndex,
@@ -573,39 +575,39 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
       </div>
 
       {/* Navigation Controls & Spotlight Pill */}
-      <div className="relative z-30 mt-4 flex items-center justify-between px-2">
+      <div className="relative z-30 mt-3 sm:mt-4 flex items-center justify-between gap-1.5 sm:gap-2 px-1 sm:px-2">
         <button
           type="button"
           onClick={handlePrev}
           aria-label="Previous product"
-          className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"
+          className="grid size-8 sm:size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer shrink-0"
         >
-          <ChevronLeft className="size-4" />
+          <ChevronLeft className="size-3.5 sm:size-4" />
         </button>
 
         <Link
           to="/product/$slug"
           params={{ slug: current.slug }}
-          className="group flex items-center gap-2 rounded-full border border-white/10 bg-black/75 px-4 py-1.5 text-xs text-white/90 shadow-md backdrop-blur-md transition-all hover:border-[#22c55e]/50 hover:bg-[#0c1611]"
+          className="group min-w-0 max-w-[240px] sm:max-w-none flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-black/75 px-3 sm:px-4 py-1.5 text-xs text-white/90 shadow-md backdrop-blur-md transition-all hover:border-[#22c55e]/50 hover:bg-[#0c1611]"
         >
-          <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
-          <span className="font-bold text-white group-hover:text-[#22c55e] transition-colors">
+          <span className="size-1.5 sm:size-2 rounded-full bg-[#22c55e] animate-pulse shrink-0" />
+          <span className="font-bold text-white group-hover:text-[#22c55e] transition-colors truncate text-[11px] sm:text-xs">
             {current.name}
           </span>
-          <span className="text-white/40">•</span>
-          <span className="font-semibold text-emerald-400">
+          <span className="text-white/40 shrink-0">•</span>
+          <span className="font-semibold text-emerald-400 whitespace-nowrap text-[11px] sm:text-xs shrink-0">
             From ₹{Number(current.retail_price ?? current.lowestRetailPrice ?? current.variants?.[0]?.retail_price ?? current.variants?.[0]?.retailPrice ?? 0).toLocaleString("en-IN")}
           </span>
-          <ArrowRight className="size-3 text-[#22c55e] transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight className="size-3 text-[#22c55e] transition-transform group-hover:translate-x-0.5 shrink-0" />
         </Link>
 
         <button
           type="button"
           onClick={handleNext}
           aria-label="Next product"
-          className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"
+          className="grid size-8 sm:size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer shrink-0"
         >
-          <ChevronRight className="size-4" />
+          <ChevronRight className="size-3.5 sm:size-4" />
         </button>
       </div>
 
@@ -659,6 +661,7 @@ function Index() {
   // Reviews & FAQ Filters
   const [reviewRatingFilter, setReviewRatingFilter] = useState<"all" | "5" | "4" | "3">("all");
   const [activeFaqCategory, setActiveFaqCategory] = useState<string>("All");
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   // Group products by the official store categories for Section View
   const productsByCategory = useMemo(() => {
@@ -925,17 +928,17 @@ function Index() {
   return (
     <main className="overflow-hidden bg-background text-foreground">
       {/* Header */}
-      <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur-xl">
-        <div className="mx-auto grid h-[72px] max-w-[1240px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:flex sm:justify-between sm:px-8">
-          <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="GurfMarket home">
+      <header className="sticky top-0 z-30 border-b border-white/[0.08] bg-background/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[68px] sm:h-[72px] max-w-[1240px] items-center justify-between gap-3 px-4 sm:px-8">
+          <a href="#top" className="flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label="GurfMarket home">
             <img
               src="/logo-icon.png"
               alt="GurfMarket Crown Emblem"
-              className="size-9.5 shrink-0 rounded-xl object-cover border border-[#22c55e]/50 shadow-[0_0_16px_rgba(34,197,94,0.35)]"
+              className="size-8.5 sm:size-9.5 shrink-0 rounded-xl object-cover border border-[#22c55e]/50 shadow-[0_0_16px_rgba(34,197,94,0.35)]"
             />
             <div className="flex flex-col">
-              <span className="truncate text-[15px] font-extrabold tracking-[0.06em] text-white">GURFMARKET</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#22c55e]">Market Live</span>
+              <span className="truncate text-sm sm:text-[15px] font-extrabold tracking-[0.06em] text-white">GURFMARKET</span>
+              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#22c55e]">Market Live</span>
             </div>
           </a>
 
@@ -947,47 +950,236 @@ function Index() {
             <a className="transition-colors hover:text-foreground" href="#faq">FAQ</a>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-3">
-            <Button asChild className="h-10 rounded-sm px-4 text-xs sm:px-5 sm:text-sm">
-              <a href="#products">Explore All <ArrowUpRight aria-hidden="true" /></a>
-            </Button>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <a
+              href="#products"
+              className="inline-flex h-9 sm:h-10 items-center gap-1.5 rounded-full bg-[#22c55e] px-3.5 sm:px-5 text-xs sm:text-sm font-extrabold text-black shadow-[0_0_20px_rgba(34,197,94,0.35)] transition-all hover:bg-[#16a34a] active:scale-95 cursor-pointer"
+            >
+              <span>Explore All</span>
+              <ArrowUpRight className="size-3.5 sm:size-4" />
+            </a>
+
+            {/* 3-Dots Mobile Section Switcher Trigger */}
+            <button
+              type="button"
+              onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+              aria-label="Change section"
+              title="Open Section Switcher"
+              className="grid size-9 sm:size-10 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-[#22c55e] hover:border-[#22c55e]/50 hover:bg-white/10 active:scale-95 transition-all md:hidden cursor-pointer shadow-sm"
+            >
+              {isMobileNavOpen ? <X className="size-4 text-white" /> : <MoreVertical className="size-4" />}
+            </button>
           </div>
         </div>
       </header>
+
+      {/* Mobile 3-Dots Section Switcher Modal / Bottom Drawer */}
+      {isMobileNavOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/85 backdrop-blur-md transition-opacity md:hidden">
+          <div
+            className="fixed inset-0"
+            onClick={() => setIsMobileNavOpen(false)}
+          />
+          <div className="relative z-10 max-h-[85vh] w-full overflow-y-auto rounded-t-3xl border-t border-[#22c55e]/30 bg-[#0c0e12] p-5 shadow-[0_-15px_40px_rgba(0,0,0,0.9)]">
+            {/* Grab handle */}
+            <div className="mx-auto h-1.5 w-12 rounded-full bg-white/20 mb-4" />
+
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 mb-4">
+              <div>
+                <h3 className="text-base font-extrabold text-white flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
+                  Quick Section Switcher
+                </h3>
+                <p className="text-xs text-white/50 mt-0.5">
+                  Tap to instantly jump to any section
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsMobileNavOpen(false)}
+                className="grid size-8 place-items-center rounded-full bg-white/10 text-white/70 hover:text-white cursor-pointer"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+
+            {/* Quick Section Links Grid */}
+            <div className="grid grid-cols-2 gap-2.5">
+              {[
+                {
+                  id: "top",
+                  label: "Hero Showcase",
+                  sub: "Top offers & 3D carousel",
+                  icon: Zap,
+                  color: "text-amber-400 bg-amber-400/10",
+                },
+                {
+                  id: "products",
+                  label: "Product Catalog",
+                  sub: "All 50+ digital accounts",
+                  icon: ShoppingBag,
+                  color: "text-[#22c55e] bg-[#22c55e]/10",
+                },
+                {
+                  id: "section-streaming",
+                  label: "Streaming",
+                  sub: "Netflix, Disney, Prime",
+                  icon: Tv,
+                  color: "text-rose-400 bg-rose-400/10",
+                  category: "Streaming",
+                },
+                {
+                  id: "section-ai-tools",
+                  label: "AI Tools",
+                  sub: "ChatGPT, Claude, etc.",
+                  icon: Bot,
+                  color: "text-purple-400 bg-purple-400/10",
+                  category: "AI Tools",
+                },
+                {
+                  id: "section-vpn---security",
+                  label: "VPN & Security",
+                  sub: "NordVPN, ExpressVPN",
+                  icon: ShieldCheck,
+                  color: "text-blue-400 bg-blue-400/10",
+                  category: "VPN & Security",
+                },
+                {
+                  id: "section-gaming",
+                  label: "Gaming & Discord",
+                  sub: "Steam, Nitro, Robux",
+                  icon: Gamepad2,
+                  color: "text-emerald-400 bg-emerald-400/10",
+                  category: "Gaming",
+                },
+                {
+                  id: "section-software",
+                  label: "Software & Pro",
+                  sub: "Windows, Canva, Office",
+                  icon: Layers3,
+                  color: "text-cyan-400 bg-cyan-400/10",
+                  category: "Software",
+                },
+                {
+                  id: "features",
+                  label: "Why Choose Us",
+                  sub: "Warranty & auto dispatch",
+                  icon: Lock,
+                  color: "text-indigo-400 bg-indigo-400/10",
+                },
+                {
+                  id: "reviews",
+                  label: "Customer Reviews",
+                  sub: "4.9/5 verified feedback",
+                  icon: Star,
+                  color: "text-amber-400 bg-amber-400/10",
+                },
+                {
+                  id: "faq",
+                  label: "FAQs & Support",
+                  sub: "24/7 instant replacement",
+                  icon: MessageSquare,
+                  color: "text-teal-400 bg-teal-400/10",
+                },
+              ].map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => {
+                      if (item.category) {
+                        setSelectedCategory(item.category);
+                        setCurrentPage(1);
+                      }
+                      setIsMobileNavOpen(false);
+                    }}
+                    className="flex flex-col rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 transition-all active:scale-95 active:bg-white/[0.08] hover:border-[#22c55e]/40 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`grid size-7 place-items-center rounded-lg ${item.color}`}>
+                        <IconComponent className="size-4" />
+                      </span>
+                      <span className="font-bold text-xs text-white truncate">
+                        {item.label}
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-white/50 truncate">
+                      {item.sub}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Quick External Actions (Invoice / Admin) */}
+            <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center gap-2">
+              <a
+                href="/invoice"
+                onClick={() => setIsMobileNavOpen(false)}
+                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-semibold text-white/80 active:scale-95 hover:border-white/20"
+              >
+                <FileText className="size-3.5 text-[#22c55e]" />
+                <span>Track Invoice</span>
+              </a>
+              <a
+                href="/admin"
+                onClick={() => setIsMobileNavOpen(false)}
+                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-semibold text-white/80 active:scale-95 hover:border-white/20"
+              >
+                <Lock className="size-3.5 text-amber-400" />
+                <span>Admin Login</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating 3-Dots Quick Navigation Pill for Mobile */}
+      <button
+        type="button"
+        onClick={() => setIsMobileNavOpen(true)}
+        aria-label="Open section menu"
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border border-[#22c55e]/50 bg-black/90 px-3.5 py-2.5 text-xs font-bold text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] backdrop-blur-xl active:scale-95 transition-all md:hidden cursor-pointer"
+      >
+        <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
+        <span className="text-[11px] uppercase tracking-wider text-white">Sections</span>
+        <MoreVertical className="size-4 text-[#22c55e]" />
+      </button>
 
       {/* Hero Section matching Supreme Market */}
       <section id="top" className="relative isolate border-b border-white/[0.08] overflow-hidden">
         {/* Background ambient lighting */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-40 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,197,94,0.18),rgba(255,255,255,0))]" />
         
-        <div className="mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-10 px-5 pt-12 pb-14 sm:px-8 sm:pt-16 sm:pb-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-20 lg:pb-16">
-          {/* Left Column: Headline matching screenshot */}
+        <div className="mx-auto grid max-w-[1240px] items-center gap-8 px-4 pt-7 pb-10 sm:px-8 sm:pt-16 sm:pb-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-20 lg:pb-16">
+          {/* Left Column: Headline */}
           <div>
-            <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-[#22c55e]">
+            <p className="text-[11px] sm:text-[12px] font-extrabold uppercase tracking-[0.2em] text-[#22c55e]">
               MORE ACCESS. BETTER PRICES.
             </p>
-            <h1 className="mt-4 font-heading text-[clamp(3.1rem,7.5vw,5.4rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-white">
+            <h1 className="mt-3 sm:mt-4 font-heading text-[2.25rem] sm:text-[3.5rem] lg:text-[4.75rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-white">
               <span className="block">Get more</span>
               <span className="block text-[#22c55e]">for less.</span>
             </h1>
-            <p className="mt-6 max-w-[500px] text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
+            <p className="mt-3.5 sm:mt-6 max-w-[500px] text-xs sm:text-base leading-relaxed text-white/70">
               Access top digital accounts, tools and services for entertainment, productivity and more, all at better prices.
             </p>
-            <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#products"
-                className="group inline-flex h-[3.25rem] items-center justify-center gap-2.5 rounded-full bg-[#22c55e] px-8 font-heading text-sm sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#16a34a]"
+                className="group inline-flex h-11 sm:h-[3.25rem] w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#22c55e] px-6 sm:px-8 font-heading text-xs sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:bg-[#16a34a] active:scale-95"
               >
                 <span>Browse products</span>
-                <ArrowRight className="size-4.5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
 
               <a
                 href="#products"
-                className="group inline-flex h-[3.25rem] items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.04] pl-2.5 pr-7 font-heading text-sm sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08]"
+                className="group inline-flex h-11 sm:h-[3.25rem] w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.04] pl-2.5 pr-6 sm:pr-7 font-heading text-xs sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] active:scale-95"
               >
-                <span className="grid size-9 place-items-center rounded-full bg-white/10 transition-colors group-hover:bg-[#22c55e] group-hover:text-black">
-                  <Boxes className="size-4" />
+                <span className="grid size-7.5 sm:size-9 place-items-center rounded-full bg-white/10 transition-colors group-hover:bg-[#22c55e] group-hover:text-black">
+                  <Boxes className="size-3.5 sm:size-4" />
                 </span>
                 <span>See the packs</span>
               </a>
@@ -995,60 +1187,60 @@ function Index() {
           </div>
 
           {/* Right Column: 3D Rotating Product Carousel */}
-          <div>
+          <div className="w-full">
             <Hero3DShowcase products={products} />
           </div>
         </div>
 
-        {/* Bottom Trust & Stats Bar matching screenshot */}
-        <div className="border-t border-white/[0.08] bg-[#07090b]/90 py-5">
-          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-6 px-5 sm:px-8">
-            <div className="flex items-center gap-3">
-              <div className="grid size-9 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
-                <Zap className="size-5" />
+        {/* Bottom Trust & Stats Bar matching Supreme Market */}
+        <div className="border-t border-white/[0.08] bg-[#07090b]/90 py-4 sm:py-5">
+          <div className="mx-auto grid grid-cols-2 gap-3 px-4 sm:flex sm:max-w-[1240px] sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:px-8">
+            <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-2 sm:border-none sm:bg-transparent sm:p-0">
+              <div className="grid size-8 sm:size-9 shrink-0 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
+                <Zap className="size-4 sm:size-5" />
               </div>
-              <div>
-                <p className="text-xs font-bold text-white">Instant delivery</p>
-                <p className="text-[11px] text-white/50">Automatic, 24/7</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="grid size-9 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
-                <Lock className="size-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-white">Secure checkout</p>
-                <p className="text-[11px] text-white/50">5 payment methods</p>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-bold text-white truncate">Instant delivery</p>
+                <p className="text-[10px] sm:text-[11px] text-white/50 truncate">Automatic, 24/7</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="grid size-9 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
-                <ShieldCheck className="size-5" />
+            <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-2 sm:border-none sm:bg-transparent sm:p-0">
+              <div className="grid size-8 sm:size-9 shrink-0 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
+                <Lock className="size-4 sm:size-5" />
               </div>
-              <div>
-                <p className="text-xs font-bold text-white">Warranty included</p>
-                <p className="text-[11px] text-white/50">Easy replacements</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="grid size-9 place-items-center rounded-xl bg-amber-400/10 text-amber-400">
-                <Star className="size-5 fill-amber-400" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-white">4.9/5 rating</p>
-                <p className="text-[11px] text-white/50">9,635 reviews</p>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-bold text-white truncate">Secure checkout</p>
+                <p className="text-[10px] sm:text-[11px] text-white/50 truncate">UPI, Cards, Crypto</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-2">
-              <div className="grid size-10 place-items-center rounded-xl bg-[#22c55e]/20 text-[#22c55e]">
-                <Crown className="size-5.5" />
+            <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-2 sm:border-none sm:bg-transparent sm:p-0">
+              <div className="grid size-8 sm:size-9 shrink-0 place-items-center rounded-xl bg-[#22c55e]/10 text-[#22c55e]">
+                <ShieldCheck className="size-4 sm:size-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-bold text-white truncate">Warranty included</p>
+                <p className="text-[10px] sm:text-[11px] text-white/50 truncate">Easy replacements</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 sm:gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] p-2 sm:border-none sm:bg-transparent sm:p-0">
+              <div className="grid size-8 sm:size-9 shrink-0 place-items-center rounded-xl bg-amber-400/10 text-amber-400">
+                <Star className="size-4 sm:size-5 fill-amber-400" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-bold text-white truncate">4.9/5 rating</p>
+                <p className="text-[10px] sm:text-[11px] text-white/50 truncate">9,635 reviews</p>
+              </div>
+            </div>
+
+            <div className="col-span-2 sm:col-span-1 flex items-center justify-center sm:justify-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2">
+              <div className="grid size-8.5 sm:size-10 shrink-0 place-items-center rounded-xl bg-[#22c55e]/20 text-[#22c55e]">
+                <Crown className="size-4.5 sm:size-5.5" />
               </div>
               <div>
-                <p className="font-heading text-sm font-extrabold text-white">504,195+</p>
+                <p className="font-heading text-xs sm:text-sm font-extrabold text-white">504,195+</p>
                 <p className="text-[10px] text-white/50">products delivered</p>
               </div>
             </div>
@@ -1058,7 +1250,7 @@ function Index() {
 
       {/* Catalog & Products Section with Supreme Market Style Filters */}
       <section id="products" className="scroll-mt-24 border-b border-border/60">
-        <div className="mx-auto max-w-[1240px] px-5 py-12 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-[1240px] px-4 py-10 sm:px-8 sm:py-20">
           {/* Section Header & Search */}
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -1068,36 +1260,36 @@ function Index() {
                   <span className="mr-1 inline-block size-1.5 rounded-full bg-emerald-400" /> Live Supreme Market Feed
                 </span>
               </div>
-              <h2 className="mt-2 font-display text-3xl font-semibold leading-tight sm:text-4xl">
+              <h2 className="mt-2 font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight">
                 Browse All Products
               </h2>
-              <p className="mt-2 text-sm text-copy-secondary">
+              <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-copy-secondary">
                 Explore individual product pages, choose variants, and order with instant automated delivery.
               </p>
             </div>
 
             {/* Search Input & Sort */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
               <div className="relative w-full sm:w-72">
-                <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-copy-secondary" />
+                <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-white/40" />
                 <input
                   type="text"
-                  placeholder="Search Netflix, Spotify, games..."
+                  placeholder="Search Netflix, ChatGPT, Steam..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-10 w-full rounded-sm border border-border bg-surface-raised pl-9 pr-4 text-xs text-foreground placeholder:text-copy-secondary/60 focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                  className="h-10 w-full rounded-xl border border-white/10 bg-white/[0.04] pl-9.5 pr-4 text-xs text-white placeholder:text-white/40 focus:border-[#22c55e] focus:bg-white/[0.06] focus:outline-none transition-all"
                 />
               </div>
 
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="h-10 rounded-sm border border-border bg-surface-raised px-3 text-xs text-foreground focus:border-electric focus:outline-none"
+                className="h-10 rounded-xl border border-white/10 bg-white/[0.04] px-3 text-xs text-white/90 focus:border-[#22c55e] focus:outline-none transition-all cursor-pointer"
               >
-                <option value="featured">Sort: Featured</option>
-                <option value="price_asc">Price: Low to High</option>
-                <option value="price_desc">Price: High to Low</option>
-                <option value="stock">Stock Availability</option>
+                <option value="featured" className="bg-[#0c0e12] text-white">Sort: Featured</option>
+                <option value="price_asc" className="bg-[#0c0e12] text-white">Price: Low to High</option>
+                <option value="price_desc" className="bg-[#0c0e12] text-white">Price: High to Low</option>
+                <option value="stock" className="bg-[#0c0e12] text-white">Stock Availability</option>
               </select>
             </div>
           </div>
