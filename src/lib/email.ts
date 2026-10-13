@@ -14,8 +14,8 @@ export async function sendOrderConfirmationEmail(params: SendOrderEmailParams): 
   try {
     const apiKey = process.env["RESEND_API_KEY"];
     if (!apiKey) {
-      console.warn("RESEND_API_KEY is not configured. Email skipped.");
-      return { success: false, error: "RESEND_API_KEY missing" };
+      console.warn("RESEND_API_KEY is not configured on the server.");
+      return { success: false, error: "RESEND_API_KEY missing on server" };
     }
 
     if (!params.toEmail || !params.toEmail.includes("@")) {

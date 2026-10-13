@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import supremeCatalogMeta from "./supreme-catalog-meta.json";
+import productsFallback from "./products-fallback.json";
 
 export interface ResellerVariant {
   id: string;
@@ -71,12 +72,8 @@ const MARKUP_MULTIPLIER = Number(process.env["RETAIL_MARKUP_MULTIPLIER"]) || 3.2
 const EUR_TO_INR_RATE = Number(process.env["EUR_TO_INR_RATE"]) || 92;
 const API_BASE_URL = "https://suprememarket.cc/api/reseller/v1";
 
-function getApiKey(): string {
-  const key = process.env["SUPREME_MARKET_API_KEY"];
-  if (!key) {
-    throw new Error("SUPREME_MARKET_API_KEY is not configured on the server.");
-  }
-  return key;
+function getApiKey(): string | null {
+  return process.env["SUPREME_MARKET_API_KEY"] || null;
 }
 
 function normalizeProductName(p: { id: string; name: string; slug?: string; variants?: any[] }): string {
@@ -242,6 +239,13 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
   async (): Promise<{ products: ResellerProduct[]; categories: string[]; lastUpdated: string }> => {
     try {
       const apiKey = getApiKey();
+      if (!apiKey) {
+        return {
+          products: productsFallback as unknown as ResellerProduct[],
+          categories: [...STORE_CATEGORIES],
+          lastUpdated: new Date().toISOString(),
+        };
+      }
       const res = await fetch(`${API_BASE_URL}/products`, {
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -430,15 +434,20 @@ export const fetchResellerProducts = createServerFn({ method: "GET" }).handler(
         };
       });
 
+      const resolvedProducts =
+        products && products.length > 0
+          ? products
+          : (productsFallback as unknown as ResellerProduct[]);
+
       return {
-        products,
+        products: resolvedProducts,
         categories: [...STORE_CATEGORIES],
         lastUpdated: new Date().toISOString(),
       };
     } catch (err: any) {
-      console.error("Failed to fetch reseller products:", err);
+      console.error("Failed to fetch reseller products, serving fallback catalog:", err);
       return {
-        products: [],
+        products: productsFallback as unknown as ResellerProduct[],
         categories: [...STORE_CATEGORIES],
         lastUpdated: new Date().toISOString(),
       };
@@ -490,6 +499,9 @@ export interface OrderResult {
 export async function executeResellerOrderInternal(data: CreateOrderParams): Promise<OrderResult> {
   try {
     const apiKey = getApiKey();
+    if (!apiKey) {
+      throw new Error("SUPREME_MARKET_API_KEY is not configured on the server.");
+    }
     const payload: any = {
       items: [
         {
