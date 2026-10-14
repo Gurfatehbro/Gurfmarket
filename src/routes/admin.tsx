@@ -76,7 +76,12 @@ function AdminDashboardPage() {
   const [markupDraft, setMarkupDraft] = useState<number>(3.2);
   const [eurRateDraft, setEurRateDraft] = useState<number>(92);
   const [announcementDraft, setAnnouncementDraft] = useState({ enabled: true, text: "" });
-  const [supportDraft, setSupportDraft] = useState({ telegram: "", discord: "", whatsapp: "" });
+  const [supportDraft, setSupportDraft] = useState({
+    telegram: "",
+    telegramSupport: "",
+    discord: "",
+    whatsapp: "",
+  });
 
   // Check saved session on mount
   useEffect(() => {
@@ -113,7 +118,12 @@ function AdminDashboardPage() {
       setMarkupDraft(dashData.config.markupMultiplier || 3.2);
       setEurRateDraft(dashData.config.eurToInrRate || 92);
       setAnnouncementDraft(dashData.config.announcement || { enabled: true, text: "" });
-      setSupportDraft(dashData.config.supportContacts || { telegram: "", discord: "", whatsapp: "" });
+      setSupportDraft({
+        telegram: dashData.config.supportContacts?.telegram || "https://t.me/gurfmarket",
+        telegramSupport: dashData.config.supportContacts?.telegramSupport || "https://t.me/gurfmarketsupport",
+        discord: dashData.config.supportContacts?.discord || "https://discord.gg/gurfmarket",
+        whatsapp: dashData.config.supportContacts?.whatsapp || "+91 94179 12634",
+      });
     } catch (err: any) {
       if (err.message?.includes("Unauthorized")) {
         handleLogout();
@@ -1399,12 +1409,33 @@ function AdminDashboardPage() {
                   Support Channels
                 </h3>
                 <div>
-                  <label className="block text-[11px] text-white/70 mb-1">Telegram Invite URL</label>
+                  <label className="block text-[11px] text-white/70 mb-1">Telegram Support Channel / Helpdesk (1-on-1)</label>
+                  <input
+                    type="text"
+                    value={supportDraft.telegramSupport}
+                    onChange={(e) => setSupportDraft((prev) => ({ ...prev, telegramSupport: e.target.value }))}
+                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white font-mono"
+                    placeholder="https://t.me/gurfmarketsupport"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] text-white/70 mb-1">Official Telegram Channel (Announcements / Stock Drops)</label>
                   <input
                     type="text"
                     value={supportDraft.telegram}
                     onChange={(e) => setSupportDraft((prev) => ({ ...prev, telegram: e.target.value }))}
-                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white"
+                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white font-mono"
+                    placeholder="https://t.me/gurfmarket"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] text-white/70 mb-1">WhatsApp Support Number</label>
+                  <input
+                    type="text"
+                    value={supportDraft.whatsapp}
+                    onChange={(e) => setSupportDraft((prev) => ({ ...prev, whatsapp: e.target.value }))}
+                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white font-mono"
+                    placeholder="+91 94179 12634"
                   />
                 </div>
                 <div>
@@ -1413,7 +1444,8 @@ function AdminDashboardPage() {
                     type="text"
                     value={supportDraft.discord}
                     onChange={(e) => setSupportDraft((prev) => ({ ...prev, discord: e.target.value }))}
-                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white"
+                    className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white font-mono"
+                    placeholder="https://discord.gg/gurfmarket"
                   />
                 </div>
               </div>

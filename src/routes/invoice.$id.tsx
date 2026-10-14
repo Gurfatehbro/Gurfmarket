@@ -70,7 +70,7 @@ function InvoicePage() {
   };
 
   const downloadCredentialsTxt = () => {
-    const content = `========================================================\nGURFMARKET — OFFICIAL ORDER INVOICE & DELIVERABLES\n========================================================\nInvoice ID:     ${displayInvoiceNumber}\nPrivate Token:  ${orderId}\nPayment ID:     ${order?.paymentId || "N/A"}\nProduct:        ${order?.productName || "Digital Product"}\nVariant:        ${order?.variantName || "Standard"}\nTotal Paid:     ₹${order?.amount ? order.amount.toLocaleString("en-IN") : "0"}\nCustomer Email: ${order?.customerEmail || "N/A"}\nDate:           ${order?.date ? new Date(order.date).toLocaleString() : new Date().toLocaleString()}\n\n--------------------------------------------------------\nDELIVERED CREDENTIALS / ACCESS KEYS:\n--------------------------------------------------------\n${credentialsText || "No credentials attached"}\n\n========================================================\nNeed Help? 24/7 Replacement Warranty Guarantee\nOfficial Telegram: https://t.me/gurfmarket\n========================================================\n`;
+    const content = `========================================================\nGURFMARKET — OFFICIAL ORDER INVOICE & DELIVERABLES\n========================================================\nInvoice ID:     ${displayInvoiceNumber}\nPrivate Token:  ${orderId}\nPayment ID:     ${order?.paymentId || "N/A"}\nProduct:        ${order?.productName || "Digital Product"}\nVariant:        ${order?.variantName || "Standard"}\nTotal Paid:     ₹${order?.amount ? order.amount.toLocaleString("en-IN") : "0"}\nCustomer Email: ${order?.customerEmail || "N/A"}\nDate:           ${order?.date ? new Date(order.date).toLocaleString() : new Date().toLocaleString()}\n\n--------------------------------------------------------\nDELIVERED CREDENTIALS / ACCESS KEYS:\n--------------------------------------------------------\n${credentialsText || "No credentials attached"}\n\n========================================================\nNeed Help? 24/7 Replacement Warranty Guarantee\nTelegram Support Desk: https://t.me/gurfmarketsupport\nOfficial Telegram:     https://t.me/gurfmarket\nWhatsApp Support:      +91 94179 12634 (https://wa.me/919417912634)\n========================================================\n`;
 
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -106,12 +106,20 @@ function InvoicePage() {
               <Link to="/">Return to Storefront</Link>
             </Button>
             <a
-              href="https://t.me/gurfmarket"
+              href="https://t.me/gurfmarketsupport"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-xs font-semibold text-white/80 hover:bg-white/10 hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-2.5 text-xs font-semibold text-sky-400 hover:bg-sky-500/20"
             >
-              Contact Support on Telegram <ExternalLink className="size-3" />
+              Telegram Support Desk (@gurfmarketsupport) <ExternalLink className="size-3" />
+            </a>
+            <a
+              href="https://wa.me/919417912634"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-400 hover:bg-emerald-500/20"
+            >
+              WhatsApp Support (+91 94179 12634) <ExternalLink className="size-3" />
             </a>
           </div>
         </div>
@@ -283,22 +291,32 @@ function InvoicePage() {
               )}
 
               {/* 24/7 Support Card */}
-              <div className="mt-6 rounded-xl border border-[#22c55e]/20 bg-[#22c55e]/[0.04] p-4 text-xs print:hidden">
+              <div className="mt-6 rounded-xl border border-[#22c55e]/20 bg-[#22c55e]/[0.04] p-4 text-xs print:hidden space-y-2.5">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold">
                   <ShieldCheck className="size-4" />
                   <span>24/7 Replacement Warranty</span>
                 </div>
-                <p className="mt-1.5 text-[11px] text-white/60 leading-relaxed">
-                  Need help activating or have questions? Our support team is available around the clock.
+                <p className="text-[11px] text-white/60 leading-relaxed">
+                  Need help activating or instant replacements? Reach our direct support channels:
                 </p>
-                <a
-                  href="https://t.me/gurfmarket"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#22c55e] py-2 text-center text-xs font-extrabold text-black hover:bg-[#16a34a] transition-colors"
-                >
-                  Open Telegram Support Ticket →
-                </a>
+                <div className="pt-1 flex flex-col gap-2">
+                  <a
+                    href="https://t.me/gurfmarketsupport"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#22c55e] py-2 text-center text-xs font-extrabold text-black hover:bg-[#16a34a] transition-colors"
+                  >
+                    Open Telegram Support (@gurfmarketsupport) →
+                  </a>
+                  <a
+                    href="https://wa.me/919417912634"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 py-2 text-center text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                  >
+                    WhatsApp Support (+91 94179 12634) →
+                  </a>
+                </div>
               </div>
             </div>
           </aside>
@@ -405,15 +423,35 @@ function InvoicePage() {
                   </p>
                 </div>
 
-                <a
-                  href="https://t.me/gurfmarket"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-5 py-3 text-xs font-bold text-white transition-all print:hidden"
-                >
-                  <span>Telegram Support</span>
-                  <ExternalLink className="size-3.5" />
-                </a>
+                <div className="flex flex-wrap items-center gap-2 print:hidden">
+                  <a
+                    href="https://t.me/gurfmarketsupport"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[#22c55e] px-4 py-2.5 text-xs font-extrabold text-black hover:bg-[#16a34a] transition-all shadow-[0_0_15px_rgba(34,197,94,0.25)]"
+                  >
+                    <span>Telegram Support</span>
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                  <a
+                    href="https://wa.me/919417912634"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 px-4 py-2.5 text-xs font-bold text-emerald-300 hover:bg-emerald-500/30 transition-all"
+                  >
+                    <span>WhatsApp</span>
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                  <a
+                    href="https://t.me/gurfmarket"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-4 py-2.5 text-xs font-bold text-white transition-all"
+                  >
+                    <span>Official Channel</span>
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
 

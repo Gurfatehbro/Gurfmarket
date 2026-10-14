@@ -107,22 +107,48 @@ function ContactPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-6 shadow-xl space-y-4">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-6 shadow-xl space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white">Direct Channels</h4>
 
+              {/* WhatsApp Support */}
               <a
-                href="mailto:support@gurfmarket.com"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3 text-xs text-white/80 hover:border-[#22c55e]/40 hover:bg-white/[0.05] transition-all"
+                href="https://wa.me/919417912634"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/[0.04] p-3 text-xs text-white/90 hover:border-emerald-500/60 hover:bg-emerald-500/[0.08] transition-all"
               >
-                <span className="grid size-9 place-items-center rounded-lg bg-blue-400/10 text-blue-400">
-                  <Mail className="size-4" />
+                <span className="grid size-9 place-items-center rounded-lg bg-emerald-500/20 text-emerald-400">
+                  <MessageCircle className="size-4" />
                 </span>
-                <div>
-                  <p className="font-bold text-white">Email Support</p>
-                  <p className="text-[11px] text-white/50">support@gurfmarket.com</p>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="font-bold text-white">WhatsApp Support</p>
+                    <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-semibold text-emerald-400">Instant</span>
+                  </div>
+                  <p className="text-[11px] text-white/60 font-mono">+91 94179 12634</p>
                 </div>
               </a>
 
+              {/* Telegram Support Helpdesk */}
+              <a
+                href="https://t.me/gurfmarketsupport"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-xl border border-sky-500/30 bg-sky-500/[0.04] p-3 text-xs text-white/90 hover:border-sky-500/60 hover:bg-sky-500/[0.08] transition-all"
+              >
+                <span className="grid size-9 place-items-center rounded-lg bg-sky-500/20 text-sky-400">
+                  <Send className="size-4" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="font-bold text-white">Telegram Support Desk</p>
+                    <span className="rounded-full bg-sky-500/20 px-2 py-0.5 text-[10px] font-semibold text-sky-400">24/7 Desk</span>
+                  </div>
+                  <p className="text-[11px] text-white/60 font-mono">@gurfmarketsupport (1-on-1 Replacements)</p>
+                </div>
+              </a>
+
+              {/* Telegram Real / Official Channel */}
               <a
                 href="https://t.me/gurfmarket"
                 target="_blank"
@@ -132,9 +158,23 @@ function ContactPage() {
                 <span className="grid size-9 place-items-center rounded-lg bg-[#22c55e]/10 text-[#22c55e]">
                   <MessageSquare className="size-4" />
                 </span>
-                <div>
-                  <p className="font-bold text-white">Telegram Community & Announcements</p>
-                  <p className="text-[11px] text-white/50">@gurfmarket (Official)</p>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold text-white">Official Telegram Channel</p>
+                  <p className="text-[11px] text-white/50 font-mono">@gurfmarket (Stock Drops & Announcements)</p>
+                </div>
+              </a>
+
+              {/* Email Support */}
+              <a
+                href="mailto:support@gurfmarket.com"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3 text-xs text-white/80 hover:border-white/20 hover:bg-white/[0.05] transition-all"
+              >
+                <span className="grid size-9 place-items-center rounded-lg bg-blue-400/10 text-blue-400">
+                  <Mail className="size-4" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold text-white">Email Support</p>
+                  <p className="text-[11px] text-white/50">support@gurfmarket.com</p>
                 </div>
               </a>
 

@@ -24,6 +24,7 @@ export interface StoreConfig {
   };
   supportContacts: {
     telegram: string;
+    telegramSupport?: string | undefined;
     discord: string;
     whatsapp: string;
   };
@@ -56,8 +57,9 @@ const DEFAULT_CONFIG: StoreConfig = {
   },
   supportContacts: {
     telegram: "https://t.me/gurfmarket",
+    telegramSupport: "https://t.me/gurfmarketsupport",
     discord: "https://discord.gg/gurfmarket",
-    whatsapp: "+91 98765 43210",
+    whatsapp: "+91 94179 12634",
   },
   recentOrders: [],
   contactTickets: [],

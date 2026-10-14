@@ -55,9 +55,37 @@ export function StoreFooter() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">Customer Support</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/faq" className="text-white/60 hover:text-white transition-colors">
-                  Frequently Asked Questions
-                </Link>
+                <a
+                  href="https://t.me/gurfmarketsupport"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-sky-400 hover:text-sky-300 transition-colors"
+                >
+                  <span>Telegram Support Desk</span>
+                  <ArrowUpRight className="size-3" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/919417912634"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  <span>WhatsApp: +91 94179 12634</span>
+                  <ArrowUpRight className="size-3" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://t.me/gurfmarket"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors"
+                >
+                  <span>Official Telegram Channel</span>
+                  <ArrowUpRight className="size-3" />
+                </a>
               </li>
               <li>
                 <Link to="/contact" className="text-white/60 hover:text-white transition-colors">
@@ -65,13 +93,8 @@ export function StoreFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/features" className="text-white/60 hover:text-white transition-colors">
-                  Warranty & Features
-                </Link>
-              </li>
-              <li>
-                <Link to="/reviews" className="text-white/60 hover:text-white transition-colors">
-                  Customer Reviews
+                <Link to="/faq" className="text-white/60 hover:text-white transition-colors">
+                  Frequently Asked Questions
                 </Link>
               </li>
             </ul>
