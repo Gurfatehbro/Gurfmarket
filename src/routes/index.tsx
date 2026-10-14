@@ -17,6 +17,7 @@ import {
 
   Filter,
   Gamepad2,
+  Info,
   KeyRound,
   Layers3,
   LayoutGrid,
@@ -988,10 +989,10 @@ function Index() {
               <div>
                 <h3 className="text-base font-extrabold text-white flex items-center gap-2">
                   <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
-                  Quick Section Switcher
+                  Navigation Menu
                 </h3>
                 <p className="text-xs text-white/50 mt-0.5">
-                  Tap to instantly jump to any section
+                  Jump to any section
                 </p>
               </div>
               <button
@@ -1003,83 +1004,43 @@ function Index() {
               </button>
             </div>
 
-            {/* Quick Section Links Grid */}
-            <div className="grid grid-cols-2 gap-2.5">
+            {/* Header Section Links */}
+            <div className="flex flex-col gap-2">
               {[
                 {
-                  id: "top",
-                  label: "Hero Showcase",
-                  sub: "Top offers & 3D carousel",
-                  icon: Zap,
-                  color: "text-amber-400 bg-amber-400/10",
-                },
-                {
                   id: "products",
-                  label: "Product Catalog",
-                  sub: "All 50+ digital accounts",
+                  label: "Products",
+                  sub: "Explore all 50+ digital accounts & services",
                   icon: ShoppingBag,
-                  color: "text-[#22c55e] bg-[#22c55e]/10",
-                },
-                {
-                  id: "section-streaming",
-                  label: "Streaming",
-                  sub: "Netflix, Disney, Prime",
-                  icon: Tv,
-                  color: "text-rose-400 bg-rose-400/10",
-                  category: "Streaming",
-                },
-                {
-                  id: "section-ai-tools",
-                  label: "AI Tools",
-                  sub: "ChatGPT, Claude, etc.",
-                  icon: Bot,
-                  color: "text-purple-400 bg-purple-400/10",
-                  category: "AI Tools",
-                },
-                {
-                  id: "section-vpn---security",
-                  label: "VPN & Security",
-                  sub: "NordVPN, ExpressVPN",
-                  icon: ShieldCheck,
-                  color: "text-blue-400 bg-blue-400/10",
-                  category: "VPN & Security",
-                },
-                {
-                  id: "section-gaming",
-                  label: "Gaming & Discord",
-                  sub: "Steam, Nitro, Robux",
-                  icon: Gamepad2,
-                  color: "text-emerald-400 bg-emerald-400/10",
-                  category: "Gaming",
-                },
-                {
-                  id: "section-software",
-                  label: "Software & Pro",
-                  sub: "Windows, Canva, Office",
-                  icon: Layers3,
-                  color: "text-cyan-400 bg-cyan-400/10",
-                  category: "Software",
+                  color: "text-[#22c55e] bg-[#22c55e]/10 border-[#22c55e]/25",
                 },
                 {
                   id: "features",
-                  label: "Why Choose Us",
-                  sub: "Warranty & auto dispatch",
-                  icon: Lock,
-                  color: "text-indigo-400 bg-indigo-400/10",
+                  label: "Features",
+                  sub: "Instant automated dispatch & verified warranty",
+                  icon: Sparkles,
+                  color: "text-blue-400 bg-blue-400/10 border-blue-400/25",
                 },
                 {
                   id: "reviews",
-                  label: "Customer Reviews",
-                  sub: "4.9/5 verified feedback",
+                  label: "Reviews",
+                  sub: "4.9/5 verified rating from 9,600+ buyers",
                   icon: Star,
-                  color: "text-amber-400 bg-amber-400/10",
+                  color: "text-amber-400 bg-amber-400/10 border-amber-400/25",
+                },
+                {
+                  id: "about",
+                  label: "About",
+                  sub: "Reliable wholesale digital asset supplier",
+                  icon: Info,
+                  color: "text-purple-400 bg-purple-400/10 border-purple-400/25",
                 },
                 {
                   id: "faq",
-                  label: "FAQs & Support",
-                  sub: "24/7 instant replacement",
+                  label: "FAQ",
+                  sub: "Answers about delivery, payments & support",
                   icon: MessageSquare,
-                  color: "text-teal-400 bg-teal-400/10",
+                  color: "text-teal-400 bg-teal-400/10 border-teal-400/25",
                 },
               ].map((item) => {
                 const IconComponent = item.icon;
@@ -1087,26 +1048,23 @@ function Index() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    onClick={() => {
-                      if (item.category) {
-                        setSelectedCategory(item.category);
-                        setCurrentPage(1);
-                      }
-                      setIsMobileNavOpen(false);
-                    }}
-                    className="flex flex-col rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 transition-all active:scale-95 active:bg-white/[0.08] hover:border-[#22c55e]/40 cursor-pointer"
+                    onClick={() => setIsMobileNavOpen(false)}
+                    className="flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 transition-all active:scale-[0.98] active:bg-white/[0.08] hover:border-[#22c55e]/40 hover:bg-white/[0.06] cursor-pointer"
                   >
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className={`grid size-7 place-items-center rounded-lg ${item.color}`}>
-                        <IconComponent className="size-4" />
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className={`grid size-9 shrink-0 place-items-center rounded-xl border ${item.color}`}>
+                        <IconComponent className="size-4.5" />
                       </span>
-                      <span className="font-bold text-xs text-white truncate">
-                        {item.label}
-                      </span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-sm text-white">
+                          {item.label}
+                        </span>
+                        <span className="truncate text-[11px] text-white/50">
+                          {item.sub}
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-[10px] text-white/50 truncate">
-                      {item.sub}
-                    </span>
+                    <ArrowRight className="size-4 shrink-0 text-white/30" />
                   </a>
                 );
               })}
