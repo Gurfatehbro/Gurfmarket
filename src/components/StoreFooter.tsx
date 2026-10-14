@@ -65,13 +65,13 @@ export function StoreFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/invoice/$id" params={{ id: "search" }} className="text-white/60 hover:text-white transition-colors">
-                  Track Existing Invoice
+                <Link to="/features" className="text-white/60 hover:text-white transition-colors">
+                  Warranty & Features
                 </Link>
               </li>
               <li>
-                <Link to="/features" className="text-white/60 hover:text-white transition-colors">
-                  Warranty & Features
+                <Link to="/reviews" className="text-white/60 hover:text-white transition-colors">
+                  Customer Reviews
                 </Link>
               </li>
             </ul>

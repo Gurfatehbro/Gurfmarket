@@ -164,13 +164,12 @@ export function Navbar() {
             {/* Quick External Actions */}
             <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center gap-2">
               <Link
-                to="/invoice/$id"
-                params={{ id: "search" }}
+                to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-semibold text-white/80 active:scale-95 hover:border-white/20"
               >
-                <FileText className="size-3.5 text-[#22c55e]" />
-                <span>Track Order</span>
+                <Mail className="size-3.5 text-[#22c55e]" />
+                <span>Support Desk</span>
               </Link>
               <Link
                 to="/admin"
