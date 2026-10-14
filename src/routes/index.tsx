@@ -43,6 +43,8 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/Navbar";
+import { StoreFooter } from "@/components/StoreFooter";
 import digitalCollection from "@/assets/digital-collection.jpg";
 import {
   fetchResellerProducts,
@@ -486,11 +488,11 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
       </div>
 
       {/* 3D Envelope Cards Stage */}
-      <div className="relative mx-auto aspect-[1.3] w-full max-w-[480px]">
+      <div className="relative mx-auto h-[250px] sm:h-[310px] md:h-[350px] w-full max-w-[480px]">
         {/* Radial Ambient Floor Glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-[-12%] bottom-[-10%] h-[55%]"
+          className="pointer-events-none absolute inset-x-[-12%] bottom-[-5%] h-[55%]"
           style={{
             background:
               "radial-gradient(50% 50% at 50% 50%, rgba(34, 197, 94, 0.28), rgba(59, 130, 246, 0.15) 45%, transparent 75%)",
@@ -508,19 +510,19 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
             zIndex = 30;
             opacity = 1;
           } else if (offset === -1) {
-            transform = "translate3d(-88%, 14%, 0) scale(0.78) rotate(-7deg)";
+            transform = "translate3d(-84%, 8%, 0) scale(0.82) rotate(-6deg)";
             zIndex = 20;
             opacity = 0.88;
           } else if (offset === 1) {
-            transform = "translate3d(-12%, 14%, 0) scale(0.78) rotate(7deg)";
+            transform = "translate3d(-16%, 8%, 0) scale(0.82) rotate(6deg)";
             zIndex = 20;
             opacity = 0.88;
           } else if (offset === -2) {
-            transform = "translate3d(-120%, 28%, 0) scale(0.55) rotate(-14deg)";
+            transform = "translate3d(-110%, 18%, 0) scale(0.6) rotate(-12deg)";
             zIndex = 10;
             opacity = 0;
           } else if (offset === 2) {
-            transform = "translate3d(20%, 28%, 0) scale(0.55) rotate(14deg)";
+            transform = "translate3d(10%, 18%, 0) scale(0.6) rotate(12deg)";
             zIndex = 10;
             opacity = 0;
           }
@@ -528,7 +530,7 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
           return (
             <div
               key={product.id}
-              className="absolute left-1/2 top-[5%] w-[64%] sm:w-[56%] transition-all duration-700 ease-out"
+              className="absolute left-1/2 top-0 w-[58%] sm:w-[54%] transition-all duration-700 ease-out"
               style={{
                 transform,
                 zIndex,
@@ -928,224 +930,48 @@ function Index() {
 
   return (
     <main className="overflow-hidden bg-background text-foreground">
-      {/* Header */}
-      <header className="sticky top-0 z-30 border-b border-white/[0.08] bg-background/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-[68px] sm:h-[72px] max-w-[1240px] items-center justify-between gap-3 px-4 sm:px-8">
-          <a href="#top" className="flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label="GurfMarket home">
-            <img
-              src="/logo-icon.png"
-              alt="GurfMarket Crown Emblem"
-              className="size-8.5 sm:size-9.5 shrink-0 rounded-xl object-cover border border-[#22c55e]/50 shadow-[0_0_16px_rgba(34,197,94,0.35)]"
-            />
-            <div className="flex flex-col">
-              <span className="truncate text-sm sm:text-[15px] font-extrabold tracking-[0.06em] text-white">GURFMARKET</span>
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#22c55e]">Market Live</span>
-            </div>
-          </a>
-
-          <nav aria-label="Main navigation" className="hidden items-center gap-8 text-[13px] text-copy-secondary md:flex">
-            <a className="transition-colors hover:text-foreground" href="#products">Products</a>
-            <a className="transition-colors hover:text-foreground" href="#features">Features</a>
-            <a className="transition-colors hover:text-foreground" href="#reviews">Reviews</a>
-            <a className="transition-colors hover:text-foreground" href="#about">About</a>
-            <a className="transition-colors hover:text-foreground" href="#faq">FAQ</a>
-          </nav>
-
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <a
-              href="#products"
-              className="inline-flex h-9 sm:h-10 items-center gap-1.5 rounded-full bg-[#22c55e] px-3.5 sm:px-5 text-xs sm:text-sm font-extrabold text-black shadow-[0_0_20px_rgba(34,197,94,0.35)] transition-all hover:bg-[#16a34a] active:scale-95 cursor-pointer"
-            >
-              <span>Explore All</span>
-              <ArrowUpRight className="size-3.5 sm:size-4" />
-            </a>
-
-            {/* 3-Dots Mobile Section Switcher Trigger */}
-            <button
-              type="button"
-              onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-              aria-label="Change section"
-              title="Open Section Switcher"
-              className="grid size-9 sm:size-10 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-[#22c55e] hover:border-[#22c55e]/50 hover:bg-white/10 active:scale-95 transition-all md:hidden cursor-pointer shadow-sm"
-            >
-              {isMobileNavOpen ? <X className="size-4 text-white" /> : <MoreVertical className="size-4" />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile 3-Dots Section Switcher Modal / Bottom Drawer */}
-      {isMobileNavOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/85 backdrop-blur-md transition-opacity md:hidden">
-          <div
-            className="fixed inset-0"
-            onClick={() => setIsMobileNavOpen(false)}
-          />
-          <div className="relative z-10 max-h-[85vh] w-full overflow-y-auto rounded-t-3xl border-t border-[#22c55e]/30 bg-[#0c0e12] p-5 shadow-[0_-15px_40px_rgba(0,0,0,0.9)]">
-            {/* Grab handle */}
-            <div className="mx-auto h-1.5 w-12 rounded-full bg-white/20 mb-4" />
-
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 mb-4">
-              <div>
-                <h3 className="text-base font-extrabold text-white flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
-                  Navigation Menu
-                </h3>
-                <p className="text-xs text-white/50 mt-0.5">
-                  Jump to any section
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsMobileNavOpen(false)}
-                className="grid size-8 place-items-center rounded-full bg-white/10 text-white/70 hover:text-white cursor-pointer"
-              >
-                <X className="size-4" />
-              </button>
-            </div>
-
-            {/* Header Section Links */}
-            <div className="flex flex-col gap-2">
-              {[
-                {
-                  id: "products",
-                  label: "Products",
-                  sub: "Explore all 50+ digital accounts & services",
-                  icon: ShoppingBag,
-                  color: "text-[#22c55e] bg-[#22c55e]/10 border-[#22c55e]/25",
-                },
-                {
-                  id: "features",
-                  label: "Features",
-                  sub: "Instant automated dispatch & verified warranty",
-                  icon: Sparkles,
-                  color: "text-blue-400 bg-blue-400/10 border-blue-400/25",
-                },
-                {
-                  id: "reviews",
-                  label: "Reviews",
-                  sub: "4.9/5 verified rating from 9,600+ buyers",
-                  icon: Star,
-                  color: "text-amber-400 bg-amber-400/10 border-amber-400/25",
-                },
-                {
-                  id: "about",
-                  label: "About",
-                  sub: "Reliable wholesale digital asset supplier",
-                  icon: Info,
-                  color: "text-purple-400 bg-purple-400/10 border-purple-400/25",
-                },
-                {
-                  id: "faq",
-                  label: "FAQ",
-                  sub: "Answers about delivery, payments & support",
-                  icon: MessageSquare,
-                  color: "text-teal-400 bg-teal-400/10 border-teal-400/25",
-                },
-              ].map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={() => setIsMobileNavOpen(false)}
-                    className="flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 transition-all active:scale-[0.98] active:bg-white/[0.08] hover:border-[#22c55e]/40 hover:bg-white/[0.06] cursor-pointer"
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className={`grid size-9 shrink-0 place-items-center rounded-xl border ${item.color}`}>
-                        <IconComponent className="size-4.5" />
-                      </span>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-sm text-white">
-                          {item.label}
-                        </span>
-                        <span className="truncate text-[11px] text-white/50">
-                          {item.sub}
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowRight className="size-4 shrink-0 text-white/30" />
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* Quick External Actions (Invoice / Admin) */}
-            <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center gap-2">
-              <a
-                href="/invoice"
-                onClick={() => setIsMobileNavOpen(false)}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-semibold text-white/80 active:scale-95 hover:border-white/20"
-              >
-                <FileText className="size-3.5 text-[#22c55e]" />
-                <span>Track Invoice</span>
-              </a>
-              <a
-                href="/admin"
-                onClick={() => setIsMobileNavOpen(false)}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-semibold text-white/80 active:scale-95 hover:border-white/20"
-              >
-                <Lock className="size-3.5 text-amber-400" />
-                <span>Admin Login</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Floating 3-Dots Quick Navigation Pill for Mobile */}
-      <button
-        type="button"
-        onClick={() => setIsMobileNavOpen(true)}
-        aria-label="Open section menu"
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full border border-[#22c55e]/50 bg-black/90 px-3.5 py-2.5 text-xs font-bold text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] backdrop-blur-xl active:scale-95 transition-all md:hidden cursor-pointer"
-      >
-        <span className="size-2 rounded-full bg-[#22c55e] animate-pulse" />
-        <span className="text-[11px] uppercase tracking-wider text-white">Sections</span>
-        <MoreVertical className="size-4 text-[#22c55e]" />
-      </button>
+      {/* Universal 7-Section Navigation Header */}
+      <Navbar />
 
       {/* Hero Section matching Supreme Market */}
       <section id="top" className="relative isolate border-b border-white/[0.08] overflow-hidden">
         {/* Background ambient lighting */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-40 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,197,94,0.18),rgba(255,255,255,0))]" />
         
-        <div className="mx-auto grid max-w-[1240px] items-center gap-8 px-4 pt-7 pb-10 sm:px-8 sm:pt-16 sm:pb-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-20 lg:pb-16">
+        <div className="mx-auto grid max-w-[1240px] items-center gap-6 px-4 pt-5 pb-8 sm:px-8 sm:pt-14 sm:pb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-16 lg:pb-16">
           {/* Left Column: Headline */}
-          <div>
-            <p className="text-[11px] sm:text-[12px] font-extrabold uppercase tracking-[0.2em] text-[#22c55e]">
+          <div className="text-center lg:text-left">
+            <p className="text-[10px] sm:text-[12px] font-extrabold uppercase tracking-[0.2em] text-[#22c55e]">
               MORE ACCESS. BETTER PRICES.
             </p>
-            <h1 className="mt-3 sm:mt-4 font-heading text-[2.25rem] sm:text-[3.5rem] lg:text-[4.75rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-white">
-              <span className="block">Get more</span>
-              <span className="block text-[#22c55e]">for less.</span>
+            <h1 className="mt-2 sm:mt-4 font-heading text-3xl sm:text-[3.25rem] lg:text-[4.75rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-white">
+              <span>Get more </span>
+              <span className="text-[#22c55e]">for less.</span>
             </h1>
-            <p className="mt-3.5 sm:mt-6 max-w-[500px] text-xs sm:text-base leading-relaxed text-white/70">
+            <p className="mt-2.5 sm:mt-5 max-w-[500px] mx-auto lg:mx-0 text-xs sm:text-base leading-relaxed text-white/70">
               Access top digital accounts, tools and services for entertainment, productivity and more, all at better prices.
             </p>
-            <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#products"
-                className="group inline-flex h-11 sm:h-[3.25rem] w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#22c55e] px-6 sm:px-8 font-heading text-xs sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:bg-[#16a34a] active:scale-95"
+            <div className="mt-5 sm:mt-8 flex flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+              <Link
+                to="/products"
+                className="group inline-flex h-10 sm:h-[3.25rem] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-full bg-[#22c55e] px-4 sm:px-8 font-heading text-xs sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:bg-[#16a34a] active:scale-95 cursor-pointer"
               >
                 <span>Browse products</span>
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+                <ArrowRight className="size-3.5 sm:size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
 
-              <a
-                href="#products"
-                className="group inline-flex h-11 sm:h-[3.25rem] w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.04] pl-2.5 pr-6 sm:pr-7 font-heading text-xs sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] active:scale-95"
+              <Link
+                to="/features"
+                className="group inline-flex h-10 sm:h-[3.25rem] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-4 sm:px-7 font-heading text-xs sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] active:scale-95 cursor-pointer"
               >
-                <span className="grid size-7.5 sm:size-9 place-items-center rounded-full bg-white/10 transition-colors group-hover:bg-[#22c55e] group-hover:text-black">
-                  <Boxes className="size-3.5 sm:size-4" />
-                </span>
-                <span>See the packs</span>
-              </a>
+                <Boxes className="size-3.5 sm:size-4 text-[#22c55e]" />
+                <span>Features</span>
+              </Link>
             </div>
           </div>
 
           {/* Right Column: 3D Rotating Product Carousel */}
-          <div className="w-full">
+          <div className="w-full mt-2 lg:mt-0">
             <Hero3DShowcase products={products} />
           </div>
         </div>
@@ -1744,21 +1570,8 @@ function Index() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border/70">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-5 py-7 text-xs text-copy-secondary sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-[0.08em] text-foreground">
-            <span className="grid size-7 place-items-center rounded-sm border border-electric/50 bg-electric/10 text-[9px] font-extrabold text-electric-bright">
-              GM
-            </span>
-            GURFMARKET
-          </a>
-          <span>Powered by Supreme Market Reseller API. 3.2x Retail Catalog.</span>
-          <a href="#top" className="inline-flex items-center gap-1 hover:text-foreground">
-            Back to top <ArrowUpRight size={13} aria-hidden="true" />
-          </a>
-        </div>
-      </footer>
+      {/* Store Footer */}
+      <StoreFooter />
 
       {/* Quick Order Modal */}
       {selectedProduct && (

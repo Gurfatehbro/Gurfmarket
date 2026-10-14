@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as CheckoutIdRouteImport } from './routes/checkout.$id'
 import { Route as InvoiceIdRouteImport } from './routes/invoice.$id'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
@@ -20,9 +26,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutIdRoute = CheckoutIdRouteImport.update({
@@ -43,14 +79,26 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
+  '/products': typeof ProductsRoute
+  '/reviews': typeof ReviewsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
+  '/products': typeof ProductsRoute
+  '/reviews': typeof ReviewsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -58,7 +106,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
+  '/products': typeof ProductsRoute
+  '/reviews': typeof ReviewsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -66,13 +120,40 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/admin' | '/checkout/$id' | '/invoice/$id' | '/product/$slug'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/contact'
+    | '/faq'
+    | '/features'
+    | '/products'
+    | '/reviews'
+    | '/checkout/$id'
+    | '/invoice/$id'
+    | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/checkout/$id' | '/invoice/$id' | '/product/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/contact'
+    | '/faq'
+    | '/features'
+    | '/products'
+    | '/reviews'
+    | '/checkout/$id'
+    | '/invoice/$id'
+    | '/product/$slug'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
+    | '/contact'
+    | '/faq'
+    | '/features'
+    | '/products'
+    | '/reviews'
     | '/checkout/$id'
     | '/invoice/$id'
     | '/product/$slug'
@@ -80,7 +161,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  FeaturesRoute: typeof FeaturesRoute
+  ProductsRoute: typeof ProductsRoute
+  ReviewsRoute: typeof ReviewsRoute
   CheckoutIdRoute: typeof CheckoutIdRoute
   InvoiceIdRoute: typeof InvoiceIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -95,11 +182,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout/$id': {
@@ -128,7 +257,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  FeaturesRoute: FeaturesRoute,
+  ProductsRoute: ProductsRoute,
+  ReviewsRoute: ReviewsRoute,
   CheckoutIdRoute: CheckoutIdRoute,
   InvoiceIdRoute: InvoiceIdRoute,
   ProductSlugRoute: ProductSlugRoute,
