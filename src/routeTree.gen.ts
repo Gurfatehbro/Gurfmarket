@@ -15,8 +15,11 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as CheckoutIdRouteImport } from './routes/checkout.$id'
 import { Route as InvoiceIdRouteImport } from './routes/invoice.$id'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
@@ -51,14 +54,29 @@ const FeaturesRoute = FeaturesRouteImport.update({
   path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutIdRoute = CheckoutIdRouteImport.update({
@@ -84,8 +102,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/products': typeof ProductsRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/reviews': typeof ReviewsRoute
+  '/terms': typeof TermsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -97,8 +118,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/products': typeof ProductsRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/reviews': typeof ReviewsRoute
+  '/terms': typeof TermsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -111,8 +135,11 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/products': typeof ProductsRoute
+  '/refund-policy': typeof RefundPolicyRoute
   '/reviews': typeof ReviewsRoute
+  '/terms': typeof TermsRoute
   '/checkout/$id': typeof CheckoutIdRoute
   '/invoice/$id': typeof InvoiceIdRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -126,8 +153,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/features'
+    | '/privacy-policy'
     | '/products'
+    | '/refund-policy'
     | '/reviews'
+    | '/terms'
     | '/checkout/$id'
     | '/invoice/$id'
     | '/product/$slug'
@@ -139,8 +169,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/features'
+    | '/privacy-policy'
     | '/products'
+    | '/refund-policy'
     | '/reviews'
+    | '/terms'
     | '/checkout/$id'
     | '/invoice/$id'
     | '/product/$slug'
@@ -152,8 +185,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/features'
+    | '/privacy-policy'
     | '/products'
+    | '/refund-policy'
     | '/reviews'
+    | '/terms'
     | '/checkout/$id'
     | '/invoice/$id'
     | '/product/$slug'
@@ -166,8 +202,11 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProductsRoute: typeof ProductsRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
   ReviewsRoute: typeof ReviewsRoute
+  TermsRoute: typeof TermsRoute
   CheckoutIdRoute: typeof CheckoutIdRoute
   InvoiceIdRoute: typeof InvoiceIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -217,6 +256,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -224,11 +270,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
       fullPath: '/reviews'
       preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout/$id': {
@@ -262,8 +322,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProductsRoute: ProductsRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
   ReviewsRoute: ReviewsRoute,
+  TermsRoute: TermsRoute,
   CheckoutIdRoute: CheckoutIdRoute,
   InvoiceIdRoute: InvoiceIdRoute,
   ProductSlugRoute: ProductSlugRoute,
