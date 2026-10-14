@@ -89,7 +89,7 @@ async function readConfigOnServer(): Promise<StoreConfig> {
         customerPhone: o.customer_phone || "",
         keysDelivered: o.keys_delivered || [],
         date: o.created_at || new Date().toISOString(),
-        status: o.status || "abandoned",
+        status: o.payment_status || o.status || "completed",
       }));
       // Merge: preserve local orders (which contain active keys and tokens)
       const localOrders = localConfig.recentOrders || [];
@@ -265,27 +265,6 @@ export async function recordOrderInitiated(order: {
     config.recentOrders = [newEntry, ...existing].slice(0, 150);
     await writeConfigOnServer(config);
 
-    // Sync initiated order to Supabase
-    try {
-      const { supabase } = await import("./supabase");
-      await supabase.from("orders").upsert({
-        id: newEntry.id,
-        order_id: newEntry.orderId,
-        payment_id: newEntry.paymentId,
-        product_name: newEntry.productName,
-        variant_name: newEntry.variantName,
-        amount: newEntry.amount,
-        quantity: newEntry.quantity,
-        customer_email: newEntry.customerEmail,
-        customer_phone: newEntry.customerPhone,
-        keys_delivered: newEntry.keysDelivered,
-        status: newEntry.status,
-        created_at: newEntry.date,
-      });
-    } catch {
-      // Non-blocking fallback
-    }
-
     return { invoiceToken };
   } catch (err) {
     console.error("Failed to record initiated order:", err);
@@ -358,21 +337,19 @@ export async function recordSuccessfulOrder(order: {
     // Sync paid order to Supabase
     try {
       const { supabase } = await import("./supabase");
-      await supabase.from("orders").upsert({
-        id: order.orderId || order.paymentId,
-        order_id: order.orderId || "",
-        payment_id: order.paymentId,
+      await supabase.from("orders").insert({
+        order_id: order.orderId || order.paymentId,
+        product_id: order.variantName || "digital-item",
         product_name: order.productName,
-        variant_name: order.variantName || "",
-        amount: order.amount,
+        customer_name: order.customerEmail ? order.customerEmail.split("@")[0] : "Customer",
         customer_email: order.customerEmail || "",
-        customer_phone: order.customerPhone || "",
-        keys_delivered: order.keysDelivered || [],
-        status: "paid",
-        created_at: new Date().toISOString(),
+        customer_phone: order.customerPhone || null,
+        amount: order.amount,
+        payment_status: "completed",
+        payment_method: "razorpay",
       });
-    } catch {
-      // Non-blocking fallback
+    } catch (sbErr) {
+      console.warn("Supabase order sync notice:", sbErr);
     }
 
     return { invoiceToken: invoiceToken || order.paymentId };

@@ -29,7 +29,6 @@ import { StoreFooter } from "@/components/StoreFooter";
 import { Button } from "@/components/ui/button";
 import {
   fetchResellerProducts,
-  createResellerOrder,
   STORE_CATEGORIES,
   type ResellerProduct,
   type ResellerVariant,
@@ -153,48 +152,78 @@ function ProductsPage() {
 
     try {
       const scriptLoaded = await loadRazorpayScript();
-      if (!scriptLoaded) throw new Error("Could not load payment gateway.");
+      if (!scriptLoaded) throw new Error("Could not load Razorpay payment gateway.");
 
-      const razorpayOrder = await createRazorpayOrder({
-        amount: finalAmount,
-        currency: "INR",
-        receipt: `rcpt_${Date.now()}`,
-        notes: {
-          productName: selectedProduct.name,
-          variantName: selectedVariant?.name || "Standard",
+      const orderData = await createRazorpayOrder({
+        data: {
+          amount: finalAmount,
+          productName: `${selectedProduct.name}${selectedVariant ? ` - ${selectedVariant.name}` : ""}`,
+          productId: selectedVariant?.rawProductId || selectedProduct.id,
+          variantId: selectedVariant?.variantId || selectedVariant?.id,
+          quantity: orderQuantity,
           customerEmail: orderEmail,
-          customerPhone: customerPhone || "",
+          customerPhone: customerPhone || undefined,
         },
       });
 
+      if (!orderData?.success || !orderData?.keyId || !orderData?.orderId) {
+        throw new Error(orderData?.error || "Failed to initialize Razorpay payment order. Key missing or invalid.");
+      }
+
       const options = {
-        key: razorpayOrder.keyId,
-        amount: razorpayOrder.amount,
-        currency: razorpayOrder.currency,
+        key: orderData.keyId,
+        amount: orderData.amount,
+        currency: orderData.currency || "INR",
         name: "GurfMarket",
         description: `${selectedProduct.name} - Instant Delivery`,
         image: "/logo-icon.png",
-        order_id: razorpayOrder.orderId,
-        prefill: { email: orderEmail, contact: customerPhone || "" },
-        theme: { color: "#22c55e" },
+        order_id: orderData.orderId,
+        prefill: {
+          email: orderEmail || "customer@gurfmarket.com",
+          contact: customerPhone || "9999999999",
+        },
+        theme: {
+          color: "#22c55e",
+        },
+        modal: {
+          ondismiss: () => {
+            setIsPlacingOrder(false);
+          },
+        },
         handler: async (response: any) => {
+          setIsPlacingOrder(true);
           try {
-            await verifyRazorpayPayment({
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
+            const verification = await verifyRazorpayPayment({
+              data: {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                productId: selectedVariant?.rawProductId || selectedProduct.id,
+                variantId: selectedVariant?.variantId || selectedVariant?.id,
+                quantity: orderQuantity,
+                customerEmail: orderEmail,
+                customerPhone: customerPhone || undefined,
+                amount: finalAmount,
+                productName: `${selectedProduct.name}${selectedVariant ? ` - ${selectedVariant.name}` : ""}`,
+              },
             });
 
-            const result = await createResellerOrder({
-              productId: selectedProduct.id,
-              variantId: selectedVariant?.id,
-              quantity: orderQuantity,
-              customerEmail: orderEmail,
-              customerPhone: customerPhone || undefined,
-              paymentId: response.razorpay_payment_id,
-            });
-
-            setOrderResult(result);
+            if (verification.success) {
+              setOrderResult({
+                success: true,
+                orderId: verification.orderId,
+                paymentId: verification.paymentId,
+                keys: verification.keys || [],
+                status: verification.status,
+                notice: verification.notice,
+                invoiceToken: verification.invoiceToken,
+              });
+            } else {
+              setOrderResult({
+                success: false,
+                error: verification.error || "Payment verification failed. Please contact support.",
+              });
+            }
           } catch (err: any) {
             setOrderResult({
               success: false,
@@ -209,11 +238,17 @@ function ProductsPage() {
       const rzp = new (window as any).Razorpay(options);
       rzp.on("payment.failed", (fail: any) => {
         setIsPlacingOrder(false);
-        setOrderResult({ success: false, error: fail.error?.description || "Payment cancelled." });
+        setOrderResult({
+          success: false,
+          error: fail.error?.description || "Payment was cancelled or declined.",
+        });
       });
       rzp.open();
     } catch (err: any) {
-      setOrderResult({ success: false, error: err.message || "Checkout failed." });
+      setOrderResult({
+        success: false,
+        error: err.message || "Checkout failed. Please try again.",
+      });
       setIsPlacingOrder(false);
     }
   };

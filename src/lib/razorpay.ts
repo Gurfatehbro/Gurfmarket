@@ -46,8 +46,11 @@ export interface PaymentVerificationResult {
 }
 
 function getRazorpayCredentials(): { keyId: string; keySecret: string } {
-  const keyId = process.env["RAZORPAY_KEY_ID"] || "rzp_live_TnLnd26KFDEfoU";
-  const keySecret = process.env["RAZORPAY_KEY_SECRET"] || "tHr0xnFLmtsWJPdrue3r6YYK";
+  const keyId =
+    process.env["RAZORPAY_KEY_ID"] ||
+    process.env["VITE_RAZORPAY_KEY_ID"] ||
+    "";
+  const keySecret = process.env["RAZORPAY_KEY_SECRET"] || "";
   return { keyId, keySecret };
 }
 
@@ -59,6 +62,13 @@ export const createRazorpayOrder = createServerFn({ method: "POST" })
   .handler(async ({ data }): Promise<RazorpayOrderResult> => {
     try {
       const { keyId, keySecret } = getRazorpayCredentials();
+
+      if (!keyId || !keySecret) {
+        return {
+          success: false,
+          error: "Razorpay API keys not configured on server. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in environment variables.",
+        };
+      }
 
       // Razorpay expects integer amount in paise (1 INR = 100 paise)
       // Minimum is 100 paise (₹1.00)
@@ -135,6 +145,13 @@ export const verifyRazorpayPayment = createServerFn({ method: "POST" })
   .handler(async ({ data }): Promise<PaymentVerificationResult> => {
     try {
       const { keySecret } = getRazorpayCredentials();
+
+      if (!keySecret) {
+        return {
+          success: false,
+          error: "Razorpay Key Secret is not configured on server.",
+        };
+      }
 
       // Signature verification: HMAC SHA256 of "order_id|payment_id" with key_secret
       const body = `${data.razorpay_order_id}|${data.razorpay_payment_id}`;
