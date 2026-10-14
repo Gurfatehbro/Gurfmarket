@@ -24,13 +24,17 @@ import {
   XCircle,
   CreditCard,
   FileText,
+  Mail,
+  MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   adminLogin,
   getAdminDashboardData,
   updateStoreConfig,
+  updateTicketStatus,
   type StoreConfig,
+  type ContactTicket,
 } from "@/lib/store-config";
 import { fetchResellerProducts, type ResellerProduct } from "@/lib/reseller-api";
 
@@ -45,7 +49,7 @@ function AdminDashboardPage() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Dashboard Data State
-  const [activeTab, setActiveTab] = useState<"overview" | "orders" | "settings">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "orders" | "tickets" | "settings">("overview");
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [config, setConfig] = useState<StoreConfig | null>(null);
   const [resellerBalance, setResellerBalance] = useState<any>(null);
@@ -54,6 +58,11 @@ function AdminDashboardPage() {
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [orderStatusFilter, setOrderStatusFilter] = useState<"all" | "paid" | "abandoned" | "failed">("all");
   const [orderSearchQuery, setOrderSearchQuery] = useState("");
+
+  // Support Tickets State
+  const [ticketStatusFilter, setTicketStatusFilter] = useState<"all" | "open" | "in_progress" | "resolved">("all");
+  const [ticketSearchQuery, setTicketSearchQuery] = useState("");
+  const [isUpdatingTicket, setIsUpdatingTicket] = useState<string | null>(null);
 
   // Save/Feedback states
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -283,6 +292,67 @@ function AdminDashboardPage() {
     });
   }, [config?.recentOrders, orderStatusFilter, orderSearchQuery]);
 
+  // Support Tickets computation
+  const tickets: ContactTicket[] = useMemo(() => config?.contactTickets || [], [config?.contactTickets]);
+
+  const ticketStats = useMemo(() => {
+    let openCount = 0;
+    let inProgressCount = 0;
+    let resolvedCount = 0;
+
+    for (const t of tickets) {
+      if (t.status === "open") openCount++;
+      else if (t.status === "in_progress") inProgressCount++;
+      else if (t.status === "resolved") resolvedCount++;
+    }
+
+    return {
+      total: tickets.length,
+      openCount,
+      inProgressCount,
+      resolvedCount,
+    };
+  }, [tickets]);
+
+  const filteredTickets = useMemo(() => {
+    return tickets.filter((t) => {
+      if (ticketStatusFilter !== "all" && t.status !== ticketStatusFilter) return false;
+      if (ticketSearchQuery.trim()) {
+        const q = ticketSearchQuery.toLowerCase();
+        return (
+          t.name.toLowerCase().includes(q) ||
+          t.email.toLowerCase().includes(q) ||
+          (t.orderId || "").toLowerCase().includes(q) ||
+          t.category.toLowerCase().includes(q) ||
+          t.message.toLowerCase().includes(q) ||
+          t.id.toLowerCase().includes(q)
+        );
+      }
+      return true;
+    });
+  }, [tickets, ticketStatusFilter, ticketSearchQuery]);
+
+  const handleUpdateTicketStatus = async (ticketId: string, newStatus: "open" | "in_progress" | "resolved") => {
+    if (!token) return;
+    setIsUpdatingTicket(ticketId);
+    try {
+      const res = await updateTicketStatus({
+        data: {
+          token,
+          ticketId,
+          status: newStatus,
+        },
+      });
+      if (res.success && res.tickets) {
+        setConfig((prev) => (prev ? { ...prev, contactTickets: res.tickets } : prev));
+      }
+    } catch (err) {
+      console.error("Failed to update ticket status:", err);
+    } finally {
+      setIsUpdatingTicket(null);
+    }
+  };
+
   // LOGIN SCREEN
   if (!token) {
     return (
@@ -401,7 +471,8 @@ function AdminDashboardPage() {
           <div className="flex flex-wrap gap-2">
             {[
               { id: "overview", label: "Overview & Inventory", icon: Layers },
-              { id: "orders", label: "Customer Orders & Keys", icon: Package },
+              { id: "orders", label: "Customer Orders & Keys", icon: Package, badge: orderStats.paidCount, badgeColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+              { id: "tickets", label: "Inquiries & Tickets", icon: MessageCircle, badge: ticketStats.openCount, badgeColor: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
               { id: "settings", label: "Store Settings & Multipliers", icon: Sliders },
             ].map((tab) => {
               const Icon = tab.icon;
@@ -418,6 +489,17 @@ function AdminDashboardPage() {
                 >
                   <Icon className="size-3.5" />
                   <span>{tab.label}</span>
+                  {tab.badge !== undefined && tab.badge > 0 && (
+                    <span
+                      className={`ml-1 rounded-full px-1.5 py-0.2 text-[10px] font-mono border ${
+                        isActive
+                          ? "bg-black/20 text-black border-black/30 font-extrabold"
+                          : tab.badgeColor || "bg-white/10 text-white border-white/20"
+                      }`}
+                    >
+                      {tab.badge}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -454,7 +536,7 @@ function AdminDashboardPage() {
         {activeTab === "overview" && (
           <div className="mt-6 space-y-6">
             {/* Quick Metrics Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {/* Wholesale Balance */}
               <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-5 shadow-lg">
                 <div className="flex items-center justify-between text-white/50 text-xs">
@@ -507,6 +589,32 @@ function AdminDashboardPage() {
                 <div className="mt-1 text-xs text-[#22c55e] font-semibold flex items-center gap-1">
                   <span className="size-1.5 rounded-full bg-[#22c55e] animate-pulse" />
                   <span>Live wholesale inventory synced</span>
+                </div>
+              </div>
+
+              {/* Customer Support Inquiries */}
+              <div
+                onClick={() => setActiveTab("tickets")}
+                className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-5 shadow-lg hover:border-[#22c55e]/40 cursor-pointer transition-all group"
+              >
+                <div className="flex items-center justify-between text-white/50 text-xs">
+                  <span>Support Inquiries</span>
+                  <MessageSquare className="size-4 text-[#22c55e] group-hover:scale-110 transition-transform" />
+                </div>
+                <div className="mt-2 text-2xl font-black text-white flex items-center gap-2">
+                  <span>{ticketStats.total}</span>
+                  {ticketStats.openCount > 0 ? (
+                    <span className="rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 text-[11px] font-bold animate-pulse">
+                      {ticketStats.openCount} Open
+                    </span>
+                  ) : (
+                    <span className="rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 text-[11px] font-bold">
+                      0 Open
+                    </span>
+                  )}
+                </div>
+                <div className="mt-1 text-xs text-[#22c55e] group-hover:underline flex items-center gap-1">
+                  <span>Manage tickets →</span>
                 </div>
               </div>
             </div>
@@ -972,6 +1080,237 @@ function AdminDashboardPage() {
                       })}
                     </tbody>
                   </table>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: CUSTOMER INQUIRIES & SUPPORT TICKETS */}
+        {activeTab === "tickets" && (
+          <div className="mt-6 space-y-6">
+            {/* Header & Stats Cards */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-5 shadow-lg">
+                <div className="flex items-center justify-between text-white/50 text-xs">
+                  <span>Total Inquiries</span>
+                  <MessageSquare className="size-4 text-[#22c55e]" />
+                </div>
+                <div className="mt-2 text-2xl font-black text-white">{ticketStats.total}</div>
+                <div className="mt-1 text-xs text-white/50">Form submissions logged</div>
+              </div>
+
+              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/[0.03] p-5 shadow-lg">
+                <div className="flex items-center justify-between text-amber-400 text-xs">
+                  <span>Open / Action Needed</span>
+                  <Clock className="size-4 text-amber-400" />
+                </div>
+                <div className="mt-2 text-2xl font-black text-amber-400">{ticketStats.openCount}</div>
+                <div className="mt-1 text-xs text-white/50">Awaiting support response</div>
+              </div>
+
+              <div className="rounded-2xl border border-blue-500/20 bg-blue-500/[0.03] p-5 shadow-lg">
+                <div className="flex items-center justify-between text-blue-400 text-xs">
+                  <span>In Progress</span>
+                  <RefreshCw className="size-4 text-blue-400" />
+                </div>
+                <div className="mt-2 text-2xl font-black text-blue-400">{ticketStats.inProgressCount}</div>
+                <div className="mt-1 text-xs text-white/50">Being actively handled</div>
+              </div>
+
+              <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.03] p-5 shadow-lg">
+                <div className="flex items-center justify-between text-emerald-400 text-xs">
+                  <span>Resolved</span>
+                  <CheckCircle2 className="size-4 text-emerald-400" />
+                </div>
+                <div className="mt-2 text-2xl font-black text-emerald-400">{ticketStats.resolvedCount}</div>
+                <div className="mt-1 text-xs text-white/50">Successfully concluded</div>
+              </div>
+            </div>
+
+            {/* Inquiries Table Card */}
+            <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-6 shadow-xl space-y-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-base font-bold text-white flex items-center gap-2">
+                    <MessageCircle className="size-4 text-[#22c55e]" />
+                    <span>Customer Contact Form Submissions</span>
+                  </h2>
+                  <p className="text-xs text-white/50 mt-1">
+                    Direct inquiries, warranty replacements, and payment queries submitted from the Contact page.
+                  </p>
+                </div>
+
+                {/* Search */}
+                <div className="relative w-full sm:w-72">
+                  <Search className="absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-white/40" />
+                  <input
+                    type="text"
+                    placeholder="Search name, email, order, or text..."
+                    value={ticketSearchQuery}
+                    onChange={(e) => setTicketSearchQuery(e.target.value)}
+                    className="h-9 w-full rounded-xl border border-white/10 bg-white/[0.03] pl-9 pr-3 text-xs text-white placeholder:text-white/30 focus:border-[#22c55e] focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Status Filters */}
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.06]">
+                {[
+                  { id: "all", label: "All Tickets", count: ticketStats.total, color: "text-white" },
+                  { id: "open", label: "Open / Action Needed", count: ticketStats.openCount, dot: "bg-amber-400", color: "text-amber-400" },
+                  { id: "in_progress", label: "In Progress", count: ticketStats.inProgressCount, dot: "bg-blue-400", color: "text-blue-400" },
+                  { id: "resolved", label: "Resolved", count: ticketStats.resolvedCount, dot: "bg-emerald-400", color: "text-emerald-400" },
+                ].map((f) => {
+                  const isActive = ticketStatusFilter === f.id;
+                  return (
+                    <button
+                      key={f.id}
+                      onClick={() => setTicketStatusFilter(f.id as any)}
+                      className={`flex items-center gap-2 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                        isActive
+                          ? "bg-white/15 text-white shadow-sm ring-1 ring-white/20"
+                          : "border border-white/10 bg-white/[0.02] text-white/60 hover:bg-white/[0.06] hover:text-white"
+                      }`}
+                    >
+                      {f.dot && <span className={`size-2 rounded-full ${f.dot}`} />}
+                      <span>{f.label}</span>
+                      <span className="rounded-full bg-white/10 px-1.5 py-0.2 text-[10px] font-mono text-white/70">
+                        {f.count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Tickets List */}
+              {filteredTickets.length === 0 ? (
+                <div className="mt-8 text-center py-12 border border-dashed border-white/10 rounded-xl">
+                  <MessageSquare className="size-10 text-white/20 mx-auto" />
+                  <p className="mt-3 text-sm font-semibold text-white/60">
+                    {ticketStatusFilter === "all"
+                      ? "No contact submissions logged yet."
+                      : `No ${ticketStatusFilter} tickets found.`}
+                  </p>
+                  <p className="mt-1 text-xs text-white/40">
+                    When visitors submit the contact form on /contact, their inquiry appears here in real time.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3 pt-2">
+                  {filteredTickets.map((t) => {
+                    const isOpen = t.status === "open";
+                    const isInProgress = t.status === "in_progress";
+                    const isResolved = t.status === "resolved";
+
+                    return (
+                      <div
+                        key={t.id}
+                        className={`rounded-2xl border p-5 transition-all space-y-3 ${
+                          isOpen
+                            ? "border-amber-500/30 bg-amber-500/[0.02]"
+                            : isInProgress
+                            ? "border-blue-500/30 bg-blue-500/[0.02]"
+                            : "border-white/[0.08] bg-white/[0.02]"
+                        }`}
+                      >
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                          <div className="flex items-center gap-2.5 flex-wrap">
+                            <span className="font-mono text-xs font-bold text-[#22c55e]">{t.id}</span>
+                            <span
+                              className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                                isOpen
+                                  ? "bg-amber-500/15 text-amber-400 border border-amber-500/30"
+                                  : isInProgress
+                                  ? "bg-blue-500/15 text-blue-400 border border-blue-500/30"
+                                  : "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                              }`}
+                            >
+                              ● {t.status === "open" ? "Open" : t.status === "in_progress" ? "In Progress" : "Resolved"}
+                            </span>
+                            <span className="rounded-md bg-white/[0.06] px-2 py-0.5 text-[11px] text-white/70">
+                              {t.category}
+                            </span>
+                            {t.orderId && (
+                              <span className="font-mono text-[11px] text-white/50 bg-black/40 px-2 py-0.5 rounded border border-white/10">
+                                Order: {t.orderId}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-2 text-[11px] text-white/40">
+                            <Clock className="size-3" />
+                            <span>{new Date(t.date).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}</span>
+                          </div>
+                        </div>
+
+                        {/* Customer Header */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-y border-white/[0.06] py-2.5">
+                          <div className="flex items-center gap-3">
+                            <div className="grid size-8 place-items-center rounded-full bg-[#22c55e]/20 text-[#22c55e] font-bold text-xs">
+                              {t.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                              <div className="font-semibold text-xs text-white">{t.name}</div>
+                              <a
+                                href={`mailto:${t.email}?subject=Re: [GurfMarket Support ${t.id}] ${t.category}`}
+                                className="text-[11px] text-[#22c55e] hover:underline"
+                              >
+                                {t.email}
+                              </a>
+                            </div>
+                          </div>
+
+                          {/* Quick Actions */}
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <a
+                              href={`mailto:${t.email}?subject=Re: [GurfMarket Support ${t.id}] ${t.category}`}
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-[#22c55e]/30 bg-[#22c55e]/10 px-3 py-1.5 text-xs font-semibold text-[#22c55e] hover:bg-[#22c55e]/20 transition-all"
+                            >
+                              <Mail className="size-3" />
+                              <span>Reply Email</span>
+                            </a>
+
+                            {/* Status Change Buttons */}
+                            {t.status !== "in_progress" && (
+                              <button
+                                onClick={() => handleUpdateTicketStatus(t.id, "in_progress")}
+                                disabled={isUpdatingTicket === t.id}
+                                className="rounded-lg border border-blue-500/30 bg-blue-500/10 px-2.5 py-1.5 text-[11px] font-semibold text-blue-300 hover:bg-blue-500/20 transition-all cursor-pointer"
+                              >
+                                Mark In Progress
+                              </button>
+                            )}
+
+                            {t.status !== "resolved" && (
+                              <button
+                                onClick={() => handleUpdateTicketStatus(t.id, "resolved")}
+                                disabled={isUpdatingTicket === t.id}
+                                className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1.5 text-[11px] font-semibold text-emerald-300 hover:bg-emerald-500/20 transition-all cursor-pointer"
+                              >
+                                Mark Resolved
+                              </button>
+                            )}
+
+                            {t.status === "resolved" && (
+                              <button
+                                onClick={() => handleUpdateTicketStatus(t.id, "open")}
+                                disabled={isUpdatingTicket === t.id}
+                                className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-[11px] font-semibold text-white/60 hover:text-white transition-all cursor-pointer"
+                              >
+                                Re-open
+                              </button>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Customer Message Text */}
+                        <div className="rounded-xl border border-white/[0.06] bg-black/40 p-3.5 text-xs text-white/90 leading-relaxed font-sans whitespace-pre-wrap">
+                          {t.message}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>

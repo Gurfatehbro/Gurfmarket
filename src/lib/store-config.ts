@@ -1,6 +1,17 @@
 import { createServerFn } from "@tanstack/react-start";
 import { fetchResellerBalance } from "./reseller-api";
 
+export interface ContactTicket {
+  id: string;
+  name: string;
+  email: string;
+  orderId?: string | undefined;
+  category: string;
+  message: string;
+  date: string;
+  status: "open" | "in_progress" | "resolved";
+}
+
 export interface StoreConfig {
   customPrices: Record<string, number>;
   customNames?: Record<string, string> | undefined;
@@ -30,6 +41,7 @@ export interface StoreConfig {
     date: string;
     status: string;
   }>;
+  contactTickets?: ContactTicket[] | undefined;
 }
 
 const DEFAULT_CONFIG: StoreConfig = {
@@ -48,6 +60,7 @@ const DEFAULT_CONFIG: StoreConfig = {
     whatsapp: "+91 98765 43210",
   },
   recentOrders: [],
+  contactTickets: [],
 };
 
 const ADMIN_AUTH_TOKEN = "gurf_admin_waheguru8_session_token_authenticated";
@@ -103,6 +116,10 @@ async function readConfigOnServer(): Promise<StoreConfig> {
     }
   } catch {
     // Non-blocking fallback to local JSON
+  }
+
+  if (!localConfig.contactTickets) {
+    localConfig.contactTickets = [];
   }
 
   return localConfig;
@@ -207,10 +224,124 @@ export const updateStoreConfig = createServerFn({ method: "POST" })
       customStock: data.config.customStock ?? current.customStock,
       announcement: data.config.announcement ?? current.announcement,
       supportContacts: data.config.supportContacts ?? current.supportContacts,
+      contactTickets: data.config.contactTickets ?? current.contactTickets ?? [],
     };
 
     await writeConfigOnServer(updated);
     return { success: true, config: updated };
+  });
+
+/**
+ * Public Server Function: Submit Contact / Support Ticket
+ */
+export const submitContactTicket = createServerFn({ method: "POST" })
+  .validator(
+    (data: {
+      name: string;
+      email: string;
+      orderId?: string | undefined;
+      category: string;
+      message: string;
+    }) => data
+  )
+  .handler(async ({ data }) => {
+    if (!data.name?.trim() || !data.email?.trim() || !data.message?.trim()) {
+      return { success: false, error: "Please enter your name, email, and message." };
+    }
+
+    try {
+      const config = await readConfigOnServer();
+      const newTicket: ContactTicket = {
+        id: `TKT-${Math.floor(100000 + Math.random() * 900000)}`,
+        name: data.name.trim(),
+        email: data.email.trim(),
+        orderId: data.orderId?.trim() || undefined,
+        category: data.category || "General Inquiry",
+        message: data.message.trim(),
+        date: new Date().toISOString(),
+        status: "open",
+      };
+
+      const existingTickets = config.contactTickets || [];
+      config.contactTickets = [newTicket, ...existingTickets].slice(0, 300);
+      await writeConfigOnServer(config);
+
+      // Non-blocking email alert via Resend if configured
+      try {
+        const apiKey = process.env["RESEND_API_KEY"];
+        if (apiKey) {
+          const fromAddress = process.env["EMAIL_FROM"] || "GurfMarket Support <onboarding@resend.dev>";
+          const adminEmail = process.env["ADMIN_EMAIL"] || "fatehxgames12@gmail.com";
+          await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: fromAddress,
+              to: [adminEmail],
+              subject: `[Support Ticket ${newTicket.id}] ${newTicket.category} from ${newTicket.name}`,
+              html: `
+                <div style="font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#07090b;color:#fff;padding:24px;border-radius:12px;max-width:600px;border:1px solid rgba(255,255,255,0.1);">
+                  <h2 style="color:#22c55e;margin-top:0;">New GurfMarket Support Ticket Received</h2>
+                  <p style="font-size:14px;color:#a1a1aa;">A customer submitted a new support inquiry on the contact form:</p>
+                  <table style="width:100%;font-size:13px;color:#e4e4e7;border-collapse:collapse;margin:16px 0;">
+                    <tr><td style="padding:6px 0;color:#71717a;width:120px;">Ticket ID:</td><td style="font-weight:bold;color:#22c55e;">${newTicket.id}</td></tr>
+                    <tr><td style="padding:6px 0;color:#71717a;">Customer:</td><td style="font-weight:bold;">${newTicket.name}</td></tr>
+                    <tr><td style="padding:6px 0;color:#71717a;">Email:</td><td><a href="mailto:${newTicket.email}" style="color:#22c55e;">${newTicket.email}</a></td></tr>
+                    <tr><td style="padding:6px 0;color:#71717a;">Order ID:</td><td>${newTicket.orderId || "None provided"}</td></tr>
+                    <tr><td style="padding:6px 0;color:#71717a;">Category:</td><td><span style="background:rgba(34,197,94,0.15);color:#22c55e;padding:2px 8px;border-radius:4px;">${newTicket.category}</span></td></tr>
+                  </table>
+                  <div style="background:#11151b;border:1px solid rgba(255,255,255,0.1);padding:14px;border-radius:8px;font-size:13px;line-height:1.5;color:#f4f4f5;margin:16px 0;">
+                    <strong>Customer Message:</strong><br/>
+                    ${newTicket.message.replace(/\n/g, "<br/>")}
+                  </div>
+                  <div style="margin-top:20px;">
+                    <a href="https://gurfmarket.vercel.app/admin" style="display:inline-block;background:#22c55e;color:#000;font-weight:800;padding:10px 18px;border-radius:8px;text-decoration:none;font-size:12px;">Open Admin Panel</a>
+                  </div>
+                </div>
+              `,
+            }),
+          });
+        }
+      } catch (emailErr) {
+        // Non-blocking
+      }
+
+      return { success: true, ticketId: newTicket.id };
+    } catch (err: any) {
+      console.error("Failed to submit contact ticket:", err);
+      return { success: false, error: err.message || "Failed to submit ticket." };
+    }
+  });
+
+/**
+ * Admin Update Ticket Status
+ */
+export const updateTicketStatus = createServerFn({ method: "POST" })
+  .validator(
+    (data: {
+      token: string;
+      ticketId: string;
+      status: "open" | "in_progress" | "resolved";
+    }) => data
+  )
+  .handler(async ({ data }) => {
+    if (data.token !== ADMIN_AUTH_TOKEN) {
+      throw new Error("Unauthorized admin access.");
+    }
+
+    const config = await readConfigOnServer();
+    const tickets = config.contactTickets || [];
+    const idx = tickets.findIndex((t) => t.id === data.ticketId);
+    if (idx !== -1) {
+      tickets[idx].status = data.status;
+      config.contactTickets = tickets;
+      await writeConfigOnServer(config);
+      return { success: true, tickets };
+    }
+    return { success: false, error: "Ticket not found." };
   });
 
 /**

@@ -13,6 +13,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { StoreFooter } from "@/components/StoreFooter";
 import { Button } from "@/components/ui/button";
+import { submitContactTicket } from "@/lib/store-config";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -35,16 +36,38 @@ function ContactPage() {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [ticketId, setTicketId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) return;
+    if (!name.trim() || !email.trim() || !message.trim()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await submitContactTicket({
+        data: {
+          name,
+          email,
+          orderId: orderId || undefined,
+          category,
+          message,
+        },
+      });
+
+      if (res.success) {
+        setTicketId(res.ticketId || null);
+        setSubmitted(true);
+      } else {
+        setErrorMessage(res.error || "Failed to submit inquiry. Please try again.");
+      }
+    } catch (err: any) {
+      setErrorMessage(err.message || "Failed to submit inquiry.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1200);
+    }
   };
 
   return (
@@ -128,16 +151,23 @@ function ContactPage() {
               <div className="py-12 text-center">
                 <CheckCircle2 className="mx-auto size-14 text-[#22c55e] mb-3" />
                 <h3 className="font-heading text-xl font-bold text-white">Ticket Created Successfully!</h3>
-                <p className="mt-2 text-xs sm:text-sm text-white/60 max-w-sm mx-auto">
-                  We have received your request. An automated confirmation has been sent to <span className="text-[#22c55e] font-semibold">{email}</span>. An agent will respond shortly.
+                {ticketId && (
+                  <div className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-mono font-bold text-[#22c55e]">
+                    <span>Ticket Reference:</span>
+                    <span>{ticketId}</span>
+                  </div>
+                )}
+                <p className="mt-3 text-xs sm:text-sm text-white/60 max-w-sm mx-auto">
+                  We have received your request and logged it to our support queue. An agent will review and follow up at <span className="text-[#22c55e] font-semibold">{email}</span>.
                 </p>
                 <Button
                   onClick={() => {
                     setSubmitted(false);
                     setMessage("");
                     setOrderId("");
+                    setTicketId(null);
                   }}
-                  className="mt-6 rounded-xl bg-[#22c55e] px-6 py-2.5 text-xs font-bold text-black hover:bg-[#16a34a]"
+                  className="mt-6 rounded-xl bg-[#22c55e] px-6 py-2.5 text-xs font-bold text-black hover:bg-[#16a34a] cursor-pointer"
                 >
                   Submit Another Inquiry
                 </Button>
@@ -146,6 +176,12 @@ function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <h3 className="font-heading text-lg font-bold text-white">Open a Support Ticket</h3>
                 <p className="text-xs text-white/50">Fill in the details below and we will investigate immediately.</p>
+
+                {errorMessage && (
+                  <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300">
+                    {errorMessage}
+                  </div>
+                )}
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
