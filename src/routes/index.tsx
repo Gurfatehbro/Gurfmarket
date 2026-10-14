@@ -471,7 +471,7 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
 
   return (
     <div
-      className="relative mx-auto w-full max-w-[560px] select-none"
+      className="relative mx-auto w-full max-w-[560px] overflow-hidden select-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -488,11 +488,11 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
       </div>
 
       {/* 3D Envelope Cards Stage */}
-      <div className="relative mx-auto h-[250px] sm:h-[310px] md:h-[350px] w-full max-w-[480px]">
+      <div className="relative mx-auto h-[240px] sm:h-[300px] md:h-[340px] w-full max-w-[440px] overflow-hidden">
         {/* Radial Ambient Floor Glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-[-12%] bottom-[-5%] h-[55%]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
           style={{
             background:
               "radial-gradient(50% 50% at 50% 50%, rgba(34, 197, 94, 0.28), rgba(59, 130, 246, 0.15) 45%, transparent 75%)",
@@ -510,27 +510,31 @@ function Hero3DShowcase({ products }: { products: ResellerProduct[] }) {
             zIndex = 30;
             opacity = 1;
           } else if (offset === -1) {
-            transform = "translate3d(-84%, 8%, 0) scale(0.82) rotate(-6deg)";
+            transform = "translate3d(-85%, 6%, 0) scale(0.8) rotate(-5deg)";
             zIndex = 20;
-            opacity = 0.88;
+            opacity = 0.85;
           } else if (offset === 1) {
-            transform = "translate3d(-16%, 8%, 0) scale(0.82) rotate(6deg)";
+            transform = "translate3d(-15%, 6%, 0) scale(0.8) rotate(5deg)";
             zIndex = 20;
-            opacity = 0.88;
+            opacity = 0.85;
           } else if (offset === -2) {
-            transform = "translate3d(-110%, 18%, 0) scale(0.6) rotate(-12deg)";
+            transform = "translate3d(-110%, 14%, 0) scale(0.6) rotate(-10deg)";
             zIndex = 10;
-            opacity = 0;
+            opacity = 0.4;
           } else if (offset === 2) {
-            transform = "translate3d(10%, 18%, 0) scale(0.6) rotate(12deg)";
+            transform = "translate3d(10%, 14%, 0) scale(0.6) rotate(10deg)";
             zIndex = 10;
-            opacity = 0;
+            opacity = 0.4;
           }
+
+          const isFarCard = Math.abs(offset) === 2;
 
           return (
             <div
               key={product.id}
-              className="absolute left-1/2 top-0 w-[58%] sm:w-[54%] transition-all duration-700 ease-out"
+              className={`absolute left-1/2 top-0 w-[54%] sm:w-[50%] transition-all duration-700 ease-out ${
+                isFarCard ? "hidden md:block" : "block"
+              }`}
               style={{
                 transform,
                 zIndex,
@@ -938,23 +942,23 @@ function Index() {
         {/* Background ambient lighting */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-40 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,197,94,0.18),rgba(255,255,255,0))]" />
         
-        <div className="mx-auto grid max-w-[1240px] items-center gap-6 px-4 pt-5 pb-8 sm:px-8 sm:pt-14 sm:pb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-16 lg:pb-16">
+        <div className="mx-auto grid w-full max-w-[1240px] items-center gap-6 px-4 pt-4 pb-8 sm:px-8 sm:pt-14 sm:pb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:pt-16 lg:pb-16 overflow-hidden">
           {/* Left Column: Headline */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left min-w-0">
             <p className="text-[10px] sm:text-[12px] font-extrabold uppercase tracking-[0.2em] text-[#22c55e]">
               MORE ACCESS. BETTER PRICES.
             </p>
-            <h1 className="mt-2 sm:mt-4 font-heading text-3xl sm:text-[3.25rem] lg:text-[4.75rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-white">
-              <span>Get more </span>
+            <h1 className="mt-2 sm:mt-4 font-heading text-3xl sm:text-[3.25rem] lg:text-[4.75rem] font-extrabold leading-[1.08] tracking-tight text-white">
+              <span className="block sm:inline">Get more </span>
               <span className="text-[#22c55e]">for less.</span>
             </h1>
             <p className="mt-2.5 sm:mt-5 max-w-[500px] mx-auto lg:mx-0 text-xs sm:text-base leading-relaxed text-white/70">
               Access top digital accounts, tools and services for entertainment, productivity and more, all at better prices.
             </p>
-            <div className="mt-5 sm:mt-8 flex flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+            <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full max-w-sm mx-auto lg:mx-0">
               <Link
                 to="/products"
-                className="group inline-flex h-10 sm:h-[3.25rem] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-full bg-[#22c55e] px-4 sm:px-8 font-heading text-xs sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:bg-[#16a34a] active:scale-95 cursor-pointer"
+                className="group inline-flex h-10.5 sm:h-[3.25rem] items-center justify-center gap-2 rounded-full bg-[#22c55e] px-5 sm:px-8 font-heading text-xs sm:text-base font-extrabold text-black shadow-[0_12px_35px_-8px_rgba(34,197,94,0.65)] transition-all duration-300 hover:bg-[#16a34a] active:scale-95 cursor-pointer"
               >
                 <span>Browse products</span>
                 <ArrowRight className="size-3.5 sm:size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -962,7 +966,7 @@ function Index() {
 
               <Link
                 to="/features"
-                className="group inline-flex h-10 sm:h-[3.25rem] flex-1 sm:flex-initial items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-4 sm:px-7 font-heading text-xs sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] active:scale-95 cursor-pointer"
+                className="group inline-flex h-10.5 sm:h-[3.25rem] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-5 sm:px-7 font-heading text-xs sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/[0.08] active:scale-95 cursor-pointer"
               >
                 <Boxes className="size-3.5 sm:size-4 text-[#22c55e]" />
                 <span>Features</span>
@@ -971,7 +975,7 @@ function Index() {
           </div>
 
           {/* Right Column: 3D Rotating Product Carousel */}
-          <div className="w-full mt-2 lg:mt-0">
+          <div className="w-full min-w-0 mt-2 lg:mt-0 overflow-hidden">
             <Hero3DShowcase products={products} />
           </div>
         </div>
