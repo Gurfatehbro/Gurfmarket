@@ -67,17 +67,6 @@ export function StoreFooter() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/919417912634"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors"
-                >
-                  <span>WhatsApp: +91 94179 12634</span>
-                  <ArrowUpRight className="size-3" />
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://t.me/gurfmarket"
                   target="_blank"
                   rel="noreferrer"

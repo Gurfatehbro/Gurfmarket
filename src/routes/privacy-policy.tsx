@@ -85,7 +85,7 @@ function PrivacyPolicyPage() {
                 <strong>Email Address:</strong> Used solely to transmit your digital account credentials, invoice receipt, and order tracking links.
               </li>
               <li>
-                <strong>Phone Number (Optional):</strong> Used if you request SMS order alerts or require WhatsApp support verification.
+                <strong>Phone Number (Optional):</strong> Used if you request SMS order alerts or payment receipts.
               </li>
               <li>
                 <strong>Transaction Identifier:</strong> Razorpay order ID and payment reference number to link your transaction with stock delivery.

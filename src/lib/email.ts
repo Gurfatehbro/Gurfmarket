@@ -157,9 +157,6 @@ export async function sendOrderConfirmationEmail(params: SendOrderEmailParams): 
                 <a href="https://t.me/gurfmarketsupport" target="_blank" style="display:inline-block;background:rgba(14,165,233,0.15);color:#38bdf8;border:1px solid rgba(14,165,233,0.3);font-size:12px;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:10px;margin:4px;">
                   💬 Telegram Support (@gurfmarketsupport)
                 </a>
-                <a href="https://wa.me/919417912634" target="_blank" style="display:inline-block;background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.3);font-size:12px;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:10px;margin:4px;">
-                  📱 WhatsApp Support (+91 94179 12634)
-                </a>
                 <a href="https://t.me/gurfmarket" target="_blank" style="display:inline-block;background:rgba(255,255,255,0.06);color:#ffffff;border:1px solid rgba(255,255,255,0.12);font-size:12px;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:10px;margin:4px;">
                   📢 Official Channel (@gurfmarket)
                 </a>
@@ -204,7 +201,6 @@ ${invoiceUrl}
 
 Need Help? 24/7 Replacement Warranty Guarantee
 Telegram Support Desk: https://t.me/gurfmarketsupport
-WhatsApp Support:      +91 94179 12634 (https://wa.me/919417912634)
 Official Channel:      https://t.me/gurfmarket
 
 © ${new Date().getFullYear()} GurfMarket — Instant Verified Subscriptions`;

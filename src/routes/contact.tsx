@@ -110,25 +110,6 @@ function ContactPage() {
             <div className="rounded-2xl border border-white/[0.08] bg-[#0c0e12] p-6 shadow-xl space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white">Direct Channels</h4>
 
-              {/* WhatsApp Support */}
-              <a
-                href="https://wa.me/919417912634"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/[0.04] p-3 text-xs text-white/90 hover:border-emerald-500/60 hover:bg-emerald-500/[0.08] transition-all"
-              >
-                <span className="grid size-9 place-items-center rounded-lg bg-emerald-500/20 text-emerald-400">
-                  <MessageCircle className="size-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className="font-bold text-white">WhatsApp Support</p>
-                    <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-semibold text-emerald-400">Instant</span>
-                  </div>
-                  <p className="text-[11px] text-white/60 font-mono">+91 94179 12634</p>
-                </div>
-              </a>
-
               {/* Telegram Support Helpdesk */}
               <a
                 href="https://t.me/gurfmarketsupport"

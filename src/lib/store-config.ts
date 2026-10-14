@@ -26,7 +26,7 @@ export interface StoreConfig {
     telegram: string;
     telegramSupport?: string | undefined;
     discord: string;
-    whatsapp: string;
+    whatsapp?: string | undefined;
   };
   recentOrders: Array<{
     id: string;
@@ -59,7 +59,6 @@ const DEFAULT_CONFIG: StoreConfig = {
     telegram: "https://t.me/gurfmarket",
     telegramSupport: "https://t.me/gurfmarketsupport",
     discord: "https://discord.gg/gurfmarket",
-    whatsapp: "+91 94179 12634",
   },
   recentOrders: [],
   contactTickets: [],

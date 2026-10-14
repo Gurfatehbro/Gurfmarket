@@ -140,7 +140,7 @@ function RefundPolicyPage() {
                 <span className="text-[#22c55e] font-mono text-sm font-bold">Step 3</span>
                 <h4 className="font-bold text-white mt-1 text-xs">Receive New Key</h4>
                 <p className="text-[11px] text-white/50 mt-1">
-                  Contact our support on Telegram, WhatsApp, or Discord. Our team validates and replaces it immediately.
+                  Contact our support on Telegram or Discord. Our team validates and replaces it immediately.
                 </p>
               </div>
             </div>
